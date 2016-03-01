@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/signin.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+</head>
+
+<body>
+	<% for(var i in messages) { %>
+		<div class="flash">
+			<%= messages[i] %>
+		</div>
+	<% } %>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+        		<div class="text-center">
+        		    <h1><%= title %></h1>    
+          		    <img src="img/dracula.gif" alt="Hack Hands logo">          			
+        		</div>
+	        </div>
+	        <div class="col-md-9 personal-info">
+                <% if ( user ) { %>
+					<h2>Hello <%=user%> </h2>
+					<a href="/logout">Logout</a>
+					<a href="/profile">My Profile</a>
+					<a href="/bgrequest">Submit a BG request</a>
+				<% } else { %>
+					<a href="/register">Register</a>
+					<a href="/login">Login</a>
+					<a href="/bgrequest">Submit a BG request</a>
+				<% } %>	        
+	        </div>
+	        
+		</div>
+	</div>
+
+
+
+</body>
+</html>

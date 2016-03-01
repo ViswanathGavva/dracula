@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		<%=title %>
+	</title>
+
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/signin.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container"></div><div class="container">
+    <h1>Edit Profile</h1>
+  	<hr>
+	<div class="row">
+      <!-- left column -->
+      <div class="col-md-3">
+        <div class="text-center">
+          <img src="img/def_profile.png" class="avatar img-circle" alt="avatar">
+          <h6>Upload a different photo...</h6>
+          
+          <input type="file" class="form-control">
+        </div>
+      </div>
+      
+      <!-- edit form column -->
+      <div class="col-md-9 personal-info">
+      <form class="form-horizontal" action="/bgrequest" method="post">
+		<% for(var i in messages) { %>
+		<div class="alert alert-info alert-dismissable">          
+          <i class="fa fa-coffee"></i>		
+			<div class="flash">
+				<%= messages[i] %>
+			</div>
+		</div>	
+		<% } %>         
+        
+        <ul class="nav nav-pills">
+		    <li class="active"><a data-toggle="pill" href="#personalinfo">Personal Information</a></li>
+		    <li><a data-toggle="pill" href="#contactinfo">Contact Information</a></li>
+		    <li><a data-toggle="pill" href="#addressinfo">Address</a></li>
+		    <li><a data-toggle="pill" href="#donorinfo">Donor Profile</a></li>
+		</ul>
+		<div class="tab-content">
+			<div id="personalinfo" class="tab-pane fade in active">
+		      <h3>Personal info</h3>
+		      <div class="form-group">
+	            <label class="col-lg-3 control-label">Full name:</label>
+	            <div class="col-lg-8">
+	              <input class="form-control" type="text" value="<%=name%>" name="firstname">
+	            </div>
+	          </div>  
+	          <div class="form-group">
+	            <label class="col-md-3 control-label">Username:</label>
+	            <div class="col-md-8">
+	              <input class="form-control" type="text" value="<%=username%>" name="username">
+	            </div>
+	          </div>
+	          <div class="form-group">
+	            <label class="col-md-3 control-label">Password:</label>
+	            <div class="col-md-8">
+	              <input class="form-control" type="password" value="*********" name="password">
+	            </div>
+	          </div>          	          		      
+		    </div>			    	
+			<div id="contactinfo" class="tab-pane fade in">
+		      <h3>Contact info</h3>
+	          <div class="form-group">
+	            <label class="col-lg-3 control-label">Email:</label>
+	            <div class="col-lg-8">
+	              <input class="form-control" type="text" value="<%=email%>" name="name">
+	            </div>
+	          </div>
+	          <div class="form-group">
+	            <label class="col-lg-3 control-label">Phone:</label>
+	            <div class="col-lg-8">
+	              <input class="form-control" type="text" value="<%=phone%>" name="phone">
+	            </div>
+	          </div>
+
+		    </div>		
+			<div id="addressinfo" class="tab-pane fade in">		
+			  <div class="tab-links col-md-3">      
+		      <ul class="nav nav-pills nav-stacked">
+		      	<li class="active"><a data-toggle="pill" href="#curlocation">Current Information</a></li>
+		      	<li> <a data-toggle="pill" href="#offlocation">Office location</a></li>
+		      	<li> <a data-toggle="pill" href="#hometown">Home town</a></li>		      			      	
+		      </ul>
+		      </div>
+		      <div class="tab-content col-md-9">
+		      	<div id="curlocation" class="tab-pane fade in active">
+		      	
+		      	<h4>Current location</h4>
+		          <div class="form-group">
+		            <label class="col-lg-3 control-label">Area:</label>
+		            <div class="col-lg-8">
+		              <input class="form-control" type="text" value="<%=name%>" name="firstname">
+		            </div>
+		          </div> 
+		          <div class="form-group">
+		            <label class="col-lg-3 control-label">City:</label>
+		            <div class="col-lg-8">
+		              <input class="form-control" type="text" value="<%=name%>" name="firstname">
+		            </div>
+		          </div> 
+		          <div class="form-group">
+		            <label class="col-lg-3 control-label">State:</label>
+		            <div class="col-lg-8">
+		              <input class="form-control" type="text" value="<%=name%>" name="firstname">
+		            </div>
+		          </div> 
+		          <div class="form-group">
+		            <label class="col-lg-3 control-label">Pincode:</label>
+		            <div class="col-lg-8">
+		              <input class="form-control" type="text" value="<%=name%>" name="firstname">
+		            </div>
+		          </div> 
+		      	
+		      	</div>
+		      	<div id="offlocation" class="tab-pane fade in">
+		      	
+		      	<h4>Office location</h4>
+		          <div class="form-group">
+		            <label class="col-lg-3 control-label">Area:</label>
+		            <div class="col-lg-8">
+		              <input class="form-control" type="text" value="<%=name%>" name="firstname">
+		            </div>
+		          </div> 
+		          <div class="form-group">
+		            <label class="col-lg-3 control-label">City:</label>
+		            <div class="col-lg-8">
+		              <input class="form-control" type="text" value="<%=name%>" name="firstname">
+		            </div>
+		          </div> 
+		          <div class="form-group">
+		            <label class="col-lg-3 control-label">State:</label>
+		            <div class="col-lg-8">
+		              <input class="form-control" type="text" value="<%=name%>" name="firstname">
+		            </div>
+		          </div> 
+		          <div class="form-group">
+		            <label class="col-lg-3 control-label">Pincode:</label>
+		            <div class="col-lg-8">
+		              <input class="form-control" type="text" value="<%=name%>" name="firstname">
+		            </div>
+		          </div> 
+		      	
+		      	</div>
+		      	<div id="hometown" class="tab-pane fade in">
+		      	
+		      	<h4>Home town</h4>
+		          <div class="form-group">
+		            <label class="col-lg-3 control-label">Area:</label>
+		            <div class="col-lg-8">
+		              <input class="form-control" type="text" value="<%=name%>" name="firstname">
+		            </div>
+		          </div> 
+		          <div class="form-group">
+		            <label class="col-lg-3 control-label">City:</label>
+		            <div class="col-lg-8">
+		              <input class="form-control" type="text" value="<%=name%>" name="firstname">
+		            </div>
+		          </div> 
+		          <div class="form-group">
+		            <label class="col-lg-3 control-label">State:</label>
+		            <div class="col-lg-8">
+		              <input class="form-control" type="text" value="<%=name%>" name="firstname">
+		            </div>
+		          </div> 
+		          <div class="form-group">
+		            <label class="col-lg-3 control-label">Pincode:</label>
+		            <div class="col-lg-8">
+		              <input class="form-control" type="text" value="<%=name%>" name="firstname">
+		            </div>
+		          </div> 
+		      	
+		      	</div>
+		      </div><!-- tab-content -->
+			         
+	                         	    
+		    </div> <!-- addressinfo -->	
+		    <div id="donorinfo" class="tab-pane fade in">
+			  <div class="form-group">
+	            <label class="col-lg-3 control-label">Blood Group:</label>
+	            <div class="col-lg-8">
+	              <div class="ui-select">
+	                <select id="user_bg" class="form-control" name="bloodgroup">
+	                  <option value="A+">A+</option>
+	                  <option value="A-">A-</option>
+	                  <option value="B+">B+</option>
+	                  <option value="B-">B-</option>
+	                  <option value="AB+">AB+</option>
+	                  <option value="AB-" selected="selected">AB-</option>
+	                  <option value="O+">O+</option>
+	                  <option value="O-">O-</option>
+	                </select>
+	              </div>
+	            </div>
+	          </div>
+	          <div class="form-group">
+	            <label class="col-md-3 control-label">Last Donated on:</label>
+	            <div class="col-md-8">
+	              <input class="form-control" type="text" value="<%=lastdonation%>" name="lastdonation">
+	            </div>
+	          </div>
+	          <div class="form-group">
+	            <label class="col-md-3 control-label">Donations in last 1 year:</label>
+	            <div class="col-lg-8">
+	              <div class="ui-select">
+	                <select id="user_donations" class="form-control" name="donations">
+	                  <option value="0" selected="selected">0</option>
+	                  <option value="1">1</option>
+	                  <option value="2">2</option>
+	                  <option value=">2">>2</option>
+	                </select>
+	              </div>
+	            </div>
+	          </div>  		    			    
+	          			            
+          
+      </div><!-- donorInfo -->
+		 </div> <!-- tab-content -->   
+		    
+         <div class="form-group">
+            <label class="col-md-3 control-label"></label>
+            <div class="col-md-8">
+              <input type="submit" class="btn btn-primary" value="Save Changes">
+              <span></span>
+              <input type="reset" class="btn btn-default" value="Cancel">
+            </div>
+          </div>
+        </form>    
+        
+  </div>
+</div>
+<hr>
+</body>
+</html>
