@@ -5,7 +5,7 @@ module.exports = function() {
 	var db = mongoose.connect(config.db);
 
 	require('../app/models/user.server.model');
-	require('../app/models/bgrequest.server.model');
+	require('../app/models/bloodrequest.server.model');
 
 	return db;
 };

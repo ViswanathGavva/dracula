@@ -199,6 +199,7 @@ exports.renderProfile = function(req, res) {
 	}
 	else {
 		res.render('profile', {
+		    user: req.user ? req.user.username : '',
 			title: 'Profile Form',
 			name: req.user.name,
 			email:req.user.email,
