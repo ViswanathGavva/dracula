@@ -161,11 +161,15 @@ a:focus {
     border-color: #9d081a; 
 }
 .profile-form {
-	margin-left:50px;
+	margin-left:20px;
 }
 
 .alert-info {
 	color: #fff;
 	background-color: rgba(166, 29, 16, 0.73);;
 	border-color: #9d081a;
+}
+.button-row{	
+	vertical-align: middle;
+	margin-left:50px;
 }

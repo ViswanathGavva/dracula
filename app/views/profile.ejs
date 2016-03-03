@@ -33,6 +33,7 @@
       
       <!-- edit form column -->
       <div class="col-md-9 profile-info">
+      <div class="col-md-11 row text-center">
       <form class="form-horizontal" action="/bgrequest" method="post">
 		<% for(var i in messages) { %>
 		<div class="alert alert-info alert-dismissable">          
@@ -42,16 +43,16 @@
 			</div>
 		</div>	
 		<% } %>         
-        
+        <div class="row text-center">
         <ul class="nav nav-pills">
 		    <li class="active"><a data-toggle="pill" href="#personalinfo">Personal Information</a></li>
 		    <li><a data-toggle="pill" href="#contactinfo">Contact Information</a></li>
 		    <li><a data-toggle="pill" href="#addressinfo">Address</a></li>
 		    <li><a data-toggle="pill" href="#donorinfo">Donor Profile</a></li>
 		</ul>
+		</div>
 		
-		
-		<div class="tab-content profile-form">
+		<div class="tab-content profile-form row text-center">
 			<div id="personalinfo" class="tab-pane fade in active">
 		      
 		      <div class="form-group">	            
@@ -93,9 +94,7 @@
 		      </ul>
 		      </div>
 		      <div class="tab-content col-md-8">
-		      	<div id="curlocation" class="tab-pane fade in active">
-		      	
-		      	<h4>Current location</h4>
+		      	<div id="curlocation" class="tab-pane fade in active">		      			      	
 		          <div class="form-group">		            
 		            <div class="col-lg-8">
 		              <input class="form-control" type="text" value="" name="firstname" placeholder="Area">
@@ -119,8 +118,6 @@
 		      	
 		      	</div>
 		      	<div id="offlocation" class="tab-pane fade in">
-		      	
-		      	<h4>Office location</h4>
 		          <div class="form-group">		            
 		            <div class="col-lg-8">
 		              <input class="form-control" type="text" value="" name="firstname" placeholder="Area">
@@ -144,8 +141,6 @@
 		      	
 		      	</div>
 		      	<div id="hometown" class="tab-pane fade in">
-		      	
-		      	<h4>Home town</h4>
 		          <div class="form-group">		            
 		            <div class="col-lg-8">
 		              <input class="form-control" type="text" value="" name="firstname" placeholder="Area">
@@ -213,15 +208,15 @@
       </div><!-- donorInfo -->
 		 </div> <!-- tab-content -->   
 		
-         <div class="form-group">
-            <label class="col-md-3 control-label"></label>
-            <div class="col-md-8">
+         <div class="form-group text-center row">
+            <div>
               <input type="submit" class="btn btn-primary" value="Save Changes">
               <span></span>
               <input type="reset" class="btn btn-default" value="Cancel">
             </div>
           </div>
-        </form>    
+      </form>   
+      </div> 
         
   </div>
 </div>

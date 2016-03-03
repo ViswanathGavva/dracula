@@ -14,13 +14,22 @@
 <% include partials/navbar-login-register %>
 </div>
 
-<div class="row">
-	<% for(var i in messages) { %>
-	<div class="flash"><%= messages[i] %></div>
-	<% } %>
+<div class="row">	
 
 	<div class="container">
 		<form class="form-signin" action="/register" method="post">
+	    <% if(messages.length>0){ %>
+	    <div class="alert alert-info alert-dismissable"> 
+	    <% for(var i in messages) { %>		           
+            <i class="fa fa-coffee"></i>		
+			  <div class="flash">
+				<%= messages[i].msg %>
+			  </div>
+		  
+		<% } %>
+		</div>	
+	    <% } %>
+		
         	<h2 class="form-signin-heading text-center">Sign Up</h2>
         
 

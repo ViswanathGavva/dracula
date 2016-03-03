@@ -3,7 +3,7 @@ var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
 
 var BloodreqSchema = new Schema({
-	reqby: String,
+	creator: String,
 	opendate: {
 		type: Date,
 		default: Date.now
