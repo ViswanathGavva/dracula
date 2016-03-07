@@ -56,7 +56,7 @@ height:400px;!important;
 }
 
 .bg-backgroundmain {
-	 background-image: url("../img/blooddrop_1024_682.jpg");
+	 background-image: url("../img/blooddrop_1024_6821.jpg");
 	 background-repeat: no-repeat;
      background-attachment: fixed;
      background-position: center;    
@@ -172,4 +172,9 @@ a:focus {
 .button-row{	
 	vertical-align: middle;
 	margin-left:50px;
+}
+
+.form-group.required .sr-only:after {
+  content:"*";
+  color:red;
 }

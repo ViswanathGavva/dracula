@@ -50,57 +50,41 @@ exports.renderRegister = function(req, res, next) {
 exports.register = function(req, res, next) {
 	if (!req.user) {
 	/*Viswa added*/
-	    console.log(req.body);
-	    // validate the input
-		  //req.checkBody('username', 'Username is required').notEmpty();
-		  //req.checkBody('password', 'Password is required').notEmpty();
-		  //req.checkBody('name', 'Name is required').notEmpty();
-		  //req.checkBody('email', 'Email is required').notEmpty();
-		  //req.checkBody('email', 'Email does not appear to be valid').notEmpty().isEmail();
-		  /*
+	    //console.log(req.body);
+	    // validate the input	
+		  
 		   req.checkBody({
-		  /*'name': {
+		  'name': {
 		  	notEmpty: true,
 		  	errorMessage: 'Name is required'		  
-		  },
-		  'username': {
-		  	notEmpty: true,
-		  	errorMessage:'Username is required'
 		  },
 		  'password': {
 		    notEmpty: true,		    
 		    errorMessage: 'Password must not be Null' // Error message for the parameter
-		  },
+		  }/*,
 		  'email': {
-			optional : { checkFalsy: true },
-		  	isEmail: {
+		  	optional: {checkFalsy:true},
+		  	isEmail:{
 		  		errorMessage: 'Invalid Email'
 		  	}
-		  }  
+		  }*/
 		  });
-		  */
-		  req.checkBody({
-		  'email': {
-			  optional : {checkFalsy : true },
-		  	  isEmail: {
-      			errorMessage: 'Invalid Email'
-				}
-		  	}
-		  });
-		  //req.checkBody('phone', 'Phone does not appear to be valid').len(1).isPhone();
+		  req.checkBody('username','Enter Valid username').notEmpty();
+		  req.checkBody('username','Enter Valid username').optional({checkFalsy:true}).isAlphanumeric(['en-US']);
+		  req.checkBody('password','Enter Valid password.Password must be between 6 and 20 characters').optional({checkFalsy:true}).len(6, 20);
+		  //req.checkBody('email','Email is required').notEmpty();
+		  req.checkBody('email','Enter Valid Email').optional({checkFalsy:true}).isEmail();
+		  req.checkBody('phone','Enter Valid Phone').optional({checkFalsy:true}).isPhone();
 		
 		  // check the validation object for errors
 		  var errors = req.validationErrors();
 		
-		  console.log(errors);  
+		  //console.log(errors);  
 		
 		  if (errors) {
 		    req.flash('error', errors);
 		    return res.redirect('/register');
-		  }
-		  /*else {
-		    res.render('register', { flash: { type: 'alert-success', messages: [ { msg: 'No errors!' }]}});
-		  }*/
+		  }		  
 	/*Viswa added*/    
 		var user = new User(req.body);
 		var message = null;
