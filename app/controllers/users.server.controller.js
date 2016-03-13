@@ -25,9 +25,15 @@ var getErrorMessage = function(err) {
 
 exports.renderLogin = function(req, res, next) {
 	if (!req.user) {
+		var formdata= req.session.formdata ? req.session.formdata:'';
+		delete req.session.formdata;
 		res.render('login', {
 			title: 'Log-in Form',
-			messages: req.flash('error') || req.flash('info')
+			loginmessages: req.flash('error') || req.flash('info'),
+			saveErrorMessages: req.flash('saveError'),
+			validateErrorMessages: req.flash('validationError'),
+			formdata: formdata
+
 		});
 	}
 	else {
@@ -36,10 +42,17 @@ exports.renderLogin = function(req, res, next) {
 };
 
 exports.renderRegister = function(req, res, next) {
+	console.log(req.body);
 	if (!req.user) {
+		console.log(req.session);
+		var formdata= req.session.formdata ? req.session.formdata:'';
+		delete req.session.formdata;
+
 		res.render('register', {
 			title: 'Register Form',
-			messages: req.flash('error')
+			saveErrorMessages: req.flash('saveError'),
+			validateErrorMessages: req.flash('validationError'),
+			formdata: formdata
 		});
 	}
 	else {
@@ -49,62 +62,67 @@ exports.renderRegister = function(req, res, next) {
 
 exports.register = function(req, res, next) {
 	if (!req.user) {
-	/*Viswa added*/
-	    //console.log(req.body);
-	    // validate the input	
-		  
+			delete req.session.formdata;
 		   req.checkBody({
 		  'name': {
 		  	notEmpty: true,
-		  	errorMessage: 'Name is required'		  
+		  	errorMessage: 'Name is required'
 		  },
 		  'password': {
-		    notEmpty: true,		    
+		    notEmpty: true,
 		    errorMessage: 'Password must not be Null' // Error message for the parameter
-		  }/*,
-		  'email': {
-		  	optional: {checkFalsy:true},
-		  	isEmail:{
-		  		errorMessage: 'Invalid Email'
-		  	}
-		  }*/
+		  }
 		  });
 		  req.checkBody('username','Enter Valid username').notEmpty();
 		  req.checkBody('username','Enter Valid username').optional({checkFalsy:true}).isAlphanumeric(['en-US']);
 		  req.checkBody('password','Enter Valid password.Password must be between 6 and 20 characters').optional({checkFalsy:true}).len(6, 20);
-		  //req.checkBody('email','Email is required').notEmpty();
+		  req.checkBody('email','Email is required').notEmpty();
 		  req.checkBody('email','Enter Valid Email').optional({checkFalsy:true}).isEmail();
 		  req.checkBody('phone','Enter Valid Phone').optional({checkFalsy:true}).isPhone();
-		
+
 		  // check the validation object for errors
 		  var errors = req.validationErrors();
-		
-		  //console.log(errors);  
-		
+
+		  //console.log(errors);
+
 		  if (errors) {
-		    req.flash('error', errors);
+		    req.flash('validationError', errors);
+				req.session.formdata=req.body;
 		    return res.redirect('/register');
-		  }		  
-	/*Viswa added*/    
-		var user = new User(req.body);
-		var message = null;
-		user.provider = 'local';
-		
-		user.save(function(err) {
+				/*res.render('register',{
+					title: 'Register Form',
+					messages: errors,
+					validated:req.body
+				});*/
+
+			//	res.json(errors);
+		  }
+		else{
+
+	   /*Viswa added*/
+	  	var user = new User(req.body);
+		  var message = null;
+		  user.provider = 'local';
+
+			user.save(function(err) {
 			if (err) {
 				var message = getErrorMessage(err);
-				req.flash('error', message);
+				req.flash('saveError', message);
+				req.session.formdata=req.body;
 				return res.redirect('/register');
-			}	
+			}
+
+
 
 			req.login(user, function(err) {
-				if (err) 
+				if (err)
 					return next(err);
-				
+
 				return res.redirect('/');
 			});
 		});
-	}
+	  }
+}
 	else {
 		return res.redirect('/');
 	}
@@ -152,7 +170,7 @@ exports.saveOAuthUserProfile = function(req, profile, done) {
 
 
 
-exports.create = function(req, res, next) {	
+exports.create = function(req, res, next) {
 	var user = new User(req.body);
 	user.save(function(err) {
 		if (err) {
@@ -182,7 +200,7 @@ exports.read = function(req, res) {
 exports.userByID = function(req, res, next, id) {
 	User.findOne({
 			_id: id
-		}, 
+		},
 		function(err, user) {
 			if (err) {
 				return next(err);
@@ -242,7 +260,7 @@ exports.renderProfile = function(req, res) {
 			phone:req.user.phone,
 			username:req.user.username,
 			password:req.user.password,
-			bloodgroup:req.user.donorProfile.bloodgroup,		
+			bloodgroup:req.user.donorProfile.bloodgroup,
 			lastdonation:req.user.donorProfile.lastdonation,
 			donations:req.user.donorProfile.donations,
 			messages: req.flash('error')

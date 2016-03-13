@@ -7,6 +7,33 @@
 
 	<link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/signin.css" rel="stylesheet">
+		<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+
+		<script type="text/javascript">
+/*$(document).ready(function() {
+		// this is the id of the form
+		$("#submitButton").click(function(e) {
+				alert($("#submitForm").serialize());
+		    var url = "/register";
+
+		    $.ajax({
+		           type: "POST",
+		           url: url,
+		           data: $("#submitForm").serialize(), // serializes the form's elements.
+		           success: function(data)
+		           {
+		               alert(data);
+		           },
+							 error: function(err){
+								 alert(err);
+							 }
+		         });
+
+		    e.preventDefault(); // avoid to execute the actual submit of the form.
+		});
+});*/
+		</script>
 </head>
 <body class="bg-backgroundmain">
 <div class="container">
@@ -14,81 +41,95 @@
 <% include partials/navbar-login-register %>
 </div>
 
-<div class="row">	
+<div class="row">
 
 	<div class="container">
-		<form class="form-signin" action="/register" method="post">
-	    <% if(messages.length>0){ %>
-	    <div class="alert alert-info alert-dismissable"> 
-	    <% for(var i in messages) { %>		           
-            <i class="fa fa-coffee"></i>		
+		<form class="form-signin" action="/register" method="post" id="submitForm">
+	    <% if(saveErrorMessages.length>0){ %>
+	    <div class="alert alert-info alert-dismissable">
+	    <% for(var i in saveErrorMessages) { %>
+            <i class="fa fa-coffee"></i>
 			  <div class="flash">
-				<%= messages[i].msg %>
+				<%= saveErrorMessages[i] %>
 			  </div>
-		  
-		<% } %>
-		</div>	
+
+				<% } %>
+			</div>
 	    <% } %>
-		
+
+
+			<% if(validateErrorMessages.length>0){ %>
+	    <div class="alert alert-info alert-dismissable">
+	    <% for(var i in validateErrorMessages) { %>
+            <i class="fa fa-coffee"></i>
+			  <div class="flash">
+				<%= validateErrorMessages[i].msg %>
+			  </div>
+
+				<% } %>
+			</div>
+	    <% } %>
+
         	<h2 class="form-signin-heading text-center">Sign Up</h2>
-        
+
 
 	        <div class="form-group">
 	        <label for="name" class="sr-only">Full Name</label>
-	        <input type="text" id="name" name="name" class="form-control" placeholder="Name *" required autofocus>
+	        <input type="text" id="name" name="name" class="form-control" placeholder="Name *" required autofocus value="<%= formdata.name %>">
 	        </div>
 	        <div class="form-group">
 	        <label for="username" class="sr-only">Username</label>
-	        <input type="text" id="username" name="username" class="form-control" placeholder="Username *" required>	        
+	        <input type="text" id="username" name="username" class="form-control" placeholder="Username *" required>
 	        </div>
-	        <div class="form-group">	        
+	        <div class="form-group">
 	        <label for="password" class="sr-only">Password</label>
 	        <input type="password" name="password" id="password" class="form-control" placeholder="Password *" required>
-	        </div>	        
+	        </div>
 	        <div class="form-group">
 	        <label for="email" class="sr-only">E-mail</label>
 	        <input type="email" id="email" name="email" class="form-control" placeholder="E-mail" required>
 	        </div>
+					<label for="Phone" class="sr-only">Phone</label>
 	        <div class="form-group">
-	        <label for="email" class="sr-only">Phone</label>
-	        <input type="email" id="phone" name="phone" class="form-control" placeholder="Phone" required>
+	        <input type="txte" id="phone" name="phone" class="form-control" placeholder="Phone" >
 	        </div>
-	        <div class="form-group">	        
-	        <label for="email" class="sr-only">Area</label>
-	        <input type="email" id="area" name="curlocation.area" class="form-control" placeholder="Area" required>
-	        </div>
-	        <div class="form-group">	        
-	        <label for="email" class="sr-only">City</label>
-	        <input type="email" id="city" name="curlocation.city" class="form-control" placeholder="City" required>
-	        </div>
-	        <div class="form-group">	        
-	        <label for="email" class="sr-only">State</label>
-	        <input type="email" id="state" name="curlocation.state" class="form-control" placeholder="State" required>
-	        </div>
-	        <div class="form-group">	        
-	        <label for="email" class="sr-only">Pin</label>
-	        <input type="email" id="pin" name="curlocation.pin" class="form-control" placeholder="Pin code" required>
-	        </div>
-	        
 	        <div class="form-group">
-					<label class="col-lg-3 control-label"> Blood Group: </label> 
-					<div class="col-lg-8">
+	        <label for="area" class="sr-only">Area</label>
+	        <input type="text" id="text" name="curlocation.area" class="form-control" placeholder="Area" >
+	        </div>
+	        <div class="form-group">
+	        <label for="city" class="sr-only">City</label>
+	        <input type="text" id="city" name="curlocation.city" class="form-control" placeholder="City" >
+	        </div>
+	        <div class="form-group">
+	        <label for="state" class="sr-only">State</label>
+	        <input type="text" id="state" name="curlocation.state" class="form-control" placeholder="State" >
+	        </div>
+	        <div class="form-group">
+	        <label for="pin" class="sr-only">Pin</label>
+	        <input type="text" id="pin" name="curlocation.pin" class="form-control" placeholder="Pin code" >
+	        </div>
+
+	        <div class="form-group">
+					<label for ="bloodgroup" class="sr-only"> Blood Group: </label>
+
 						<div class="ui-select">
-							<select id="req_bg" class="form-control" name="donorProfile.bloodgroup">
+							<select id="req_bg" class="form-control" name="donorProfile.bloodgroup" selected="selected">
+								<option value=""> Please select BloodGroup </option>
 								<option value="A+"> A+ </option>
 								<option value="A-"> A- </option>
 								<option value="B+"> B+ </option>
 								<option value="B-"> B- </option>
 								<option value="AB+"> AB+ </option>
-								<option value="AB-" selected="selected"> AB- </option>
+								<option value="AB-" > AB- </option>
 								<option value="O+"> O+ </option>
 								<option value="O-"> O- </option>
 							</select>
 						</div>
-					</div>
-			</div>
-	        
-	        <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+
+			    </div>
+
+	        <button class="btn btn-lg btn-primary btn-block" type="submit" id="submitButton">Register</button>
       	</form>
 
       	<div class="row">
@@ -104,6 +145,6 @@
 <% include partials/footer %>
 </div>
 
-</div>    
+</div>
 </body>
 </html>

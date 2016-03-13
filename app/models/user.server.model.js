@@ -15,29 +15,45 @@ var UserSchema = new Schema({
 	provider: String,
 	providerId: String,
 	providerData: {},
-	
+
 	curlocation:{
 		area: String,
 		city: String,
 		state: String,
 		pin: String
-	},	
+	},
 	officelocation:{
 		area: String,
 		city: String,
 		state: String,
-		pin: String		
+		pin: String
 	},
 	hometown:{
 		area: String,
 		city: String,
 		state: String,
-		pin: String		
+		pin: String
 	},
 	donorProfile: {
 		bloodgroup: String,
 		lastdonation: String,
-		donations: Number		
+		donations: Number,
+		shareemail:{
+			type:Boolean,
+			default: false
+		},
+		sharephone:{
+			type:Boolean,
+			default: false
+		},
+		receiveemail:{
+			type:Boolean,
+			default: true
+		},
+		receivesms:{
+			type:Boolean,
+			default: true
+		}
 	},//This will have donor profile. Will add it later.
 	reqsStats:{
 		numreqs: Number,
@@ -45,7 +61,7 @@ var UserSchema = new Schema({
 	}//This will have requests submitted by this user.Will add later.
 });
 
-UserSchema.pre('save', 
+UserSchema.pre('save',
 	function(next) {
 		if (this.password) {
 			var md5 = crypto.createHash('md5');
