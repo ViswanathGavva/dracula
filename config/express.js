@@ -14,6 +14,7 @@ module.exports = function() {
 	}));
 
 	app.use(bodyParser.json());
+	//app.use(bodyParser({ keepExtensions: true, uploadDir: __dirname + '/public/uploads'}));
 	//Added by Viswa
 	app.use(validator({
 	 customValidators: {
@@ -50,7 +51,8 @@ module.exports = function() {
 
 	require('../app/routes/index.server.routes.js')(app);
 	require('../app/routes/users.server.routes.js')(app);
-	require('../app/routes/bloodrequest.server.routes.js')(app);
+	require('../app/routes/error.server.routes.js')(app);
+	//require('../app/routes/bloodrequest.server.routes.js')(app);
 
 	app.use(express.static('./public'));
 

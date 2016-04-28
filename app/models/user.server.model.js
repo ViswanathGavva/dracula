@@ -4,8 +4,24 @@ var mongoose = require('mongoose'),
 
 var UserSchema = new Schema({
 	name: String,
-	email: String,
-	phone: String,
+	email: {
+		type: String,
+		trim: true,
+		index: {unique: true}
+	},
+	phone: {
+		type: String,
+		trim: true,
+		index: {unique: true}
+	},
+	role: {
+		type: String,
+		default:'Donor'
+	},
+	profilepic:{
+		type: String,
+		default:'img/def_profile.png'
+	},
 	username: {
 		type: String,
 		trim: true,

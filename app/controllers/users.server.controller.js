@@ -1,13 +1,31 @@
 var User = require('mongoose').model('User'),
-	passport = require('passport');
+	Bg = require('mongoose').model('Bg'),
+	State = require('mongoose').model('State'),
+	City = require('mongoose').model('City'),
+	passport = require('passport'),
+	fs = require('fs');;
 
 var getErrorMessage = function(err) {
 	var message = '';
+	var field ='';
 	if (err.code) {
 		switch (err.code) {
 			case 11000:
 			case 11001:
-				message = 'Username already exists';
+				if(err.errmsg.search('username')>=0){
+					field ='Username';
+				}
+				else if(err.errmsg.search('email')>=0){
+					field ='Email';
+				}
+				else if(err.errmsg.search('phone')>=0){
+					field ='Phone number';
+				}
+				else{
+					field ='Username';
+				}
+				
+				message = field+' already exists';
 				break;
 			default:
 				message = 'Something went wrong';
@@ -26,13 +44,16 @@ var getErrorMessage = function(err) {
 exports.renderLogin = function(req, res, next) {
 	if (!req.user) {
 		var formdata= req.session.formdata ? req.session.formdata:'';
+		var focusele = req.session.focusele ? req.session.focusele:'';		
 		delete req.session.formdata;
+		delete req.session.focusele;
 		res.render('login', {
 			title: 'Log-in Form',
 			loginmessages: req.flash('error') || req.flash('info'),
 			saveErrorMessages: req.flash('saveError'),
 			validateErrorMessages: req.flash('validationError'),
-			formdata: formdata
+			formdata: formdata,
+			focusele: focusele
 
 		});
 	}
@@ -41,19 +62,110 @@ exports.renderLogin = function(req, res, next) {
 	}
 };
 
-exports.renderRegister = function(req, res, next) {
-	console.log(req.body);
-	if (!req.user) {
-		console.log(req.session);
-		var formdata= req.session.formdata ? req.session.formdata:'';
-		delete req.session.formdata;
+var getBgs = function(req,res,next){	
+	Bg.find({},function(err,bgs){
+		
+		if( err) {						
+			return next(err);
+		}else{			
+			req.Bgs=bgs;			
+			next();
+		}
+	});
+};
 
-		res.render('register', {
-			title: 'Register Form',
-			saveErrorMessages: req.flash('saveError'),
-			validateErrorMessages: req.flash('validationError'),
-			formdata: formdata
-		});
+var getStates = function(req,res,next){
+	State.find({},function(err,states){
+		if(err){
+			return next(err);
+		}else{
+			req.states=states;
+			next();
+		}
+			
+	});
+};
+
+var getCities = function(req,res,next){
+	City.find({},function(err,cities){
+		if(err){
+			return next(err);
+		}else{
+			req.cities=cities;
+			next();
+		}
+			
+	});
+};
+
+exports.listCities = function(req, res) {
+	//console.log(req.state._id);
+	City.find({"state":req.state._id},function(err,cities){
+	if(err){
+		 res.json(err);
+	}else{
+		res.json(cities);
+	}
+	});
+	
+};
+
+
+exports.stateByName = function(req, res, next, name) {
+	State.findOne({
+			name: name
+		},
+		function(err, state) {
+			if (err) {
+				return next(err);
+			}
+			else {
+				req.state = state;
+				next();
+			}
+		}
+	);
+};
+
+exports.renderRegister = function(req, res, next) {
+	
+	if (!req.user) {		
+		getBgs(req,res,function(err){
+			if(err){
+				return res.redirect('/error');
+			}
+			getStates(req,res,function(err){
+				if(err){
+					return res.redirect('/error');
+				}
+				getCities(req,res,function(err){
+					if(err){
+						return res.redirect('/error');
+					}
+					var formdata= req.session.formdata ? req.session.formdata:'';
+					var focusele = req.session.focusele ? req.session.focusele:'name';		
+					delete req.session.formdata;
+					delete req.session.focusele;
+					//console.log(formdata);
+					res.render('register', {
+						title: 'Register Form',
+						saveErrorMessages: req.flash('saveError'),
+						validateErrorMessages: req.flash('validationError'),
+						formdata: formdata,
+						focusele: focusele,
+						bgs: req.Bgs,
+						states: req.states,
+						cities:req.cities
+					});
+				});//getCities End
+								
+				
+			});//getStates End.
+			
+			
+		});//getBgs End.
+		//TODO: This is called callback HELL. Need to use Async module OR promises here.
+		
 	}
 	else {
 		return res.redirect('/');
@@ -86,16 +198,12 @@ exports.register = function(req, res, next) {
 		  //console.log(errors);
 
 		  if (errors) {
+		  //console.log(errors);
 		    req.flash('validationError', errors);
+		    //console.log(req.body);
 				req.session.formdata=req.body;
-		    return res.redirect('/register');
-				/*res.render('register',{
-					title: 'Register Form',
-					messages: errors,
-					validated:req.body
-				});*/
-
-			//	res.json(errors);
+				req.session.focusele=errors[0].param;
+		    return res.redirect('/register');				
 		  }
 		else{
 
@@ -106,6 +214,7 @@ exports.register = function(req, res, next) {
 
 			user.save(function(err) {
 			if (err) {
+				//console.log(err);
 				var message = getErrorMessage(err);
 				req.flash('saveError', message);
 				req.session.formdata=req.body;
@@ -252,29 +361,100 @@ exports.renderProfile = function(req, res) {
 		});
 	}
 	else {
-		res.render('profile', {
-		    user: req.user ? req.user.username : '',
-			title: 'Profile Form',
-			name: req.user.name,
-			email:req.user.email,
-			phone:req.user.phone,
-			username:req.user.username,
-			password:req.user.password,
-			bloodgroup:req.user.donorProfile.bloodgroup,
-			lastdonation:req.user.donorProfile.lastdonation,
-			donations:req.user.donorProfile.donations,
-			messages: req.flash('error')
-		});
-	}
+		
+		getBgs(req,res,function(err){
+			if(err){
+				return res.redirect('/error');
+			}
+			getStates(req,res,function(err){
+				if(err){
+					return res.redirect('/error');
+				}
+				getCities(req,res,function(err){
+					if(err){
+						return res.redirect('/error');
+					}
+					//console.log(req.user);
+					res.render('profile', {
+					    user: req.user ? req.user.username : '',
+						title: 'Profile Form',
+						userdata: req.user ? req.user : '',
+						cities: req.cities,
+						states:req.states,
+						bgs:req.Bgs,						
+						messages: req.flash('error')
+					});
+				});//getCities End.
+			});//getStatesEnd.
+		});//getBgsEnd.
+	};
 };
 
 exports.saveProfile = function(req,res,next) {
+	//console.log(req.body);
+	//console.log(req.user);
+	req.body['donorProfile.receiveemail'] = (req.body['donorProfile.receiveemail']==='on') ? true:false;
+	req.body['donorProfile.receivesms'] = (req.body['donorProfile.receivesms']==='on') ? true:false;
+	req.body['donorProfile.shareemail'] = (req.body['donorProfile.shareemail']==='on') ? true:false;
+	req.body['donorProfile.sharephone'] = (req.body['donorProfile.sharephone']==='on') ? true:false;
 	User.findByIdAndUpdate(req.user.id, req.body, function(err, user) {
 		if (err) {
-			return next(err);
+			var message = getErrorMessage(err);
+			var user = new User(req.body);
+			req.flash('error', message);
+			req.user=user;
+			return res.redirect('/profile');
 		}
 		else {
-			res.json(user);
+			req.flash('error', 'Changes saved successfully!');
+			return res.redirect('/profile');
+			//res.json(user);
 		}
 	});
+};
+
+exports.uploadProfilePic = function(req,res,next){
+	console.log(req.files);
+	var user_id=req.user.id;
+	fs.readFile(req.files.profilepic.path, function (err, data){
+		if(err){
+    		req.flash('error', 'Error in reading the uploaded file!');
+			res.redirect('/profile');	        		
+    	}
+		var imageName = req.files.profilepic.name;
+		var imagetype = req.files.profilepic.name.split('.')[1];
+		if(!imageName){
+		      req.flash('error',"There was an error")
+		      res.redirect("/profile");
+		      res.end();
+		    } else {
+		    	var newPath = __dirname + "/../../public/img/uploads/profilepics/"+user_id + "."+imagetype;	
+		    	
+		        fs.writeFile(newPath, data, function (err) {
+		        	if(err){
+		        		req.flash('error', 'Error in uploading!');
+		    			res.redirect('/profile');
+		    			res.end();
+		        	}
+		          // let's save it
+		        	User.findByIdAndUpdate(req.user.id, {'profilepic':user_id + "."+imagetype}, function(err, user) {
+		        		if(err){
+		        			req.flash('error',"There was an error while saving");
+		        			res.redirect('/profile');
+			    			res.end();			    		
+		        		}
+		        		//saved successfully.
+		        		
+		        	});//findbyIdandUpdate End.
+		        });//WriteFile End.
+		    };
+	});//ReadFile end.
+	
+	//Remove all the temp files.
+	fs.unlink(req.files.profilepic.path,function(err){
+		if(err){
+			console.log('Error whule deleting temp file');
+		}
+	});//unlink End.
+	return res.redirect('/profile');
 };

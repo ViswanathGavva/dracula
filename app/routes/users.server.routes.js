@@ -1,5 +1,10 @@
 var users = require('../../app/controllers/users.server.controller'),
+	error = require('../../app/controllers/error.server.controller'),
 	passport = require('passport');
+
+var multipart = require('connect-multiparty');
+var multipartMiddleware = multipart();
+
 
 module.exports = function(app) {
 	app.route('/users').post(users.create).get(users.list);
@@ -45,6 +50,17 @@ module.exports = function(app) {
 	app.route('/profile')
 		.get(users.renderProfile)
 		.post(users.requiresLogin,users.saveProfile);
+	/*app.post('/upload', multipartMiddleware, function(req, resp) {
+		  console.log(req.body, req.files);
+		  // don't forget to delete all req.files when done
+		});*/
+	app.route('/uploadprofilepic')
+		.post(multipartMiddleware,users.requiresLogin,users.uploadProfilePic);
 	
+	app.route('/error')
+	.get(error.renderErrorPage);
 	
+	app.route('/getCities/:stateName')
+	.get(users.listCities);
+	app.param('stateName', users.stateByName);
 };

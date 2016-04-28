@@ -24,17 +24,31 @@
       <!-- left column -->
       <div class="col-md-3">
         <div class="text-center">
-          <img src="img/def_profile.png" class="avatar img-circle" alt="avatar">
+          <form id="user_photo" name="user_photo" action="/uploadprofilepic" method="POST" enctype="multipart/form-data">
+          <div class="form-group">
+          
+          <img src="img/uploads/profilepics/<%=userdata.profilepic%>" class="avatar img-circle profile-img" alt="avatar">
           <h6>Upload a different photo...</h6>
-
-          <input type="file" class="form-control">
+          
+          </div>
+          
+		  <div class="form-group">
+          	
+          <input type="file" class="form-control" name="profilepic">
+          
+          </div>
+          
+          <div class="form-group text-center row">          
+          <input type="submit" class="btn btn-primary" value="Upload Picture">          
+          </div>
+          </form>
         </div>
       </div>
 
       <!-- edit form column -->
       <div class="col-md-9 profile-info">
       <div class="col-md-11 row text-center">
-      <form class="form-horizontal" action="/bgrequest" method="post">
+      <form class="form-horizontal" action="/profile" method="post">
 		<% for(var i in messages) { %>
 		<div class="alert alert-info alert-dismissable">
           <i class="fa fa-coffee"></i>
@@ -56,31 +70,36 @@
 			<div id="personalinfo" class="tab-pane fade in active">
 
 		      <div class="form-group">
-	            <div class="col-lg-8">
-	              <input class="form-control" type="text" value="<%=name%>" name="firstname" placeholder="Full Name">
+	            <label class="col-md-3 control-label"> Name: </label>						      
+	            <div class="col-md-5">
+	              <input class="form-control" type="text" value="<%=userdata.name%>" name="firstname" placeholder="Full Name">
 	            </div>
 	          </div>
 	          <div class="form-group">
-	            <div class="col-md-8">
-	              <input class="form-control" type="text" value="<%=username%>" name="username" placeholder="username">
+				<label class="col-md-3 control-label"> User Name: </label>	          
+	            <div class="col-md-5">
+	              <input class="form-control" type="text" value="<%=userdata.username%>" name="username" placeholder="username">
 	            </div>
 	          </div>
 	          <div class="form-group">
-	            <div class="col-md-8">
-	              <input class="form-control" type="password" value="*********" name="password" placeholder="*********">
+	            <label class="col-md-3 control-label"> Password: </label>
+	            <div class="col-md-5">
+	              <input class="form-control" type="password" value="*********" name="password" placeholder="*********" disabled>
 	            </div>
 	          </div>
 		    </div>	<!-- personalinfo -->
 			<div id="contactinfo" class="tab-pane fade in">
 
 	          <div class="form-group">
-	            <div class="col-lg-8">
-	              <input class="form-control" type="text" value="<%=email%>" name="name" placeholder="Email Address">
+	            <label class="col-md-3 control-label"> Email: </label>
+	            <div class="col-md-5">
+	              <input class="form-control" type="text" value="<%=userdata.email%>" name="email" placeholder="Email Address">
 	            </div>
 	          </div>
 	          <div class="form-group">
-	            <div class="col-lg-8">
-	              <input class="form-control" type="text" value="<%=phone%>" name="phone" placeholder="Phone number">
+	            <label class="col-md-3 control-label"> Phone: </label>
+	            <div class="col-md-5">
+	              <input class="form-control" type="text" value="<%=userdata.phone%>" name="phone" placeholder="Phone number">
 	            </div>
 	          </div>
 
@@ -93,72 +112,114 @@
 		      	<li> <a data-toggle="pill" href="#hometown">Home town</a></li>
 		      </ul>
 		      </div>
-		      <div class="tab-content col-md-8">
+		      <div class="tab-content col-md-8 address-form">
 		      	<div id="curlocation" class="tab-pane fade in active">
 		          <div class="form-group">
-		            <div class="col-lg-8">
-		              <input class="form-control" type="text" value="" name="firstname" placeholder="Area">
+		            <label class="col-md-2 control-label"> Area: </label>
+		            <div class="col-md-6">
+		              <input class="form-control" type="text" value="<%= userdata.curlocation.area %>" name="curlocation.area" placeholder="Area">
 		            </div>
 		          </div>
 		          <div class="form-group">
-		            <div class="col-lg-8">
-		              <input class="form-control" type="text" value="" name="firstname" placeholder="City">
+		            <label class="col-md-2 control-label"> State: </label>
+		            <div class="col-md-6">		              
+		              <select id="curlocation.state" class="form-control reg-select" name="curlocation.state" selected="selected">
+		                <option value="" <%= userdata.curlocation.state ? "" : "selected" %>>Select State</option>
+		                <% for(var i in states) { %>	                  
+		                <option value="<%= states[i].name %>" <%= (userdata.curlocation.state=== states[i].name) ? "selected" : "" %>  ><%= states[i].name %></option>	                  
+		                <% } %>
+	                </select>
 		            </div>
 		          </div>
 		          <div class="form-group">
-		            <div class="col-lg-8">
-		              <input class="form-control" type="text" value="" name="firstname" placeholder="State">
+		            <label class="col-md-2 control-label"> City: </label>
+		            <div class="col-md-6">		              
+		              <select id="curlocation.city" class="form-control reg-select" name="curlocation.city" selected="selected">
+		                <option value="" <%= userdata.curlocation.city ? "" : "selected" %>>Select City</option>
+		                <% for(var i in cities) { %>	                  
+		                <option value="<%= cities[i].name %>" <%= (userdata.curlocation.city=== cities[i].name) ? "selected" : "" %>  ><%= cities[i].name %></option>	                  
+		                <% } %>
+	                </select>
 		            </div>
 		          </div>
 		          <div class="form-group">
-		            <div class="col-lg-8">
-		              <input class="form-control" type="text" value="" name="firstname" placeholder="Pin code">
+		            <label class="col-md-2 control-label"> Pin: </label>
+		            <div class="col-md-6">
+		              <input class="form-control" type="text" value="<%= userdata.curlocation.pin %>" name="curlocation.pin" placeholder="Pin code">
 		            </div>
 		          </div>
 
 		      	</div>
 		      	<div id="offlocation" class="tab-pane fade in">
 		          <div class="form-group">
-		            <div class="col-lg-8">
-		              <input class="form-control" type="text" value="" name="firstname" placeholder="Area">
+		            <label class="col-md-2 control-label"> Area: </label>
+		            <div class="col-md-6">
+		              <input class="form-control" type="text" value="<%= userdata.officelocation.area %>" name="officelocation.area" placeholder="Area">
 		            </div>
 		          </div>
 		          <div class="form-group">
-		            <div class="col-lg-8">
-		              <input class="form-control" type="text" value="" name="firstname" placeholder="City">
+		            <label class="col-md-2 control-label"> State: </label>
+		            <div class="col-md-6">
+		              <select id="officelocation.state" class="form-control reg-select" name="officelocation.state" selected="selected">
+		                <option value="" <%= userdata.officelocation.state ? "" : "selected" %>>Select State</option>
+		                <% for(var i in states) { %>	                  
+		                <option value="<%= states[i].name %>" <%= (userdata.officelocation.state=== states[i].name) ? "selected" : "" %>  ><%= states[i].name %></option>	                  
+		                <% } %>
+	                </select>
 		            </div>
 		          </div>
 		          <div class="form-group">
-		            <div class="col-lg-8">
-		              <input class="form-control" type="text" value="" name="firstname" placeholder="State">
+		            <label class="col-md-2 control-label"> City: </label>
+		            <div class="col-md-6">
+		              <select id="officelocation.city" class="form-control reg-select" name="officelocation.city" selected="selected">
+		                <option value="" <%= userdata.officelocation.city ? "" : "selected" %>>Select City</option>
+		                <% for(var i in cities) { %>	                  
+		                <option value="<%= cities[i].name %>" <%= (userdata.officelocation.city=== cities[i].name) ? "selected" : "" %>  ><%= cities[i].name %></option>	                  
+		                <% } %>
+	                </select>
 		            </div>
 		          </div>
 		          <div class="form-group">
-		            <div class="col-lg-8">
-		              <input class="form-control" type="text" value="" name="firstname" placeholder="Pin code">
+		            <label class="col-md-2 control-label"> Pin: </label>
+		            <div class="col-md-6">
+		              <input class="form-control" type="text" value="<%= userdata.officelocation.pin %>" name="officelocation.pin" placeholder="Pin code">
 		            </div>
 		          </div>
 
 		      	</div>
 		      	<div id="hometown" class="tab-pane fade in">
 		          <div class="form-group">
-		            <div class="col-lg-8">
-		              <input class="form-control" type="text" value="" name="firstname" placeholder="Area">
+		            <label class="col-md-2 control-label"> Area: </label>
+		            <div class="col-md-6">
+		              <input class="form-control" type="text" value="<%= userdata.hometown.area %>" name="hometown.area" placeholder="Area">
 		            </div>
 		          </div>
 		          <div class="form-group">
-		            <div class="col-lg-8">
-		              <input class="form-control" type="text" value="" name="firstname" placeholder="City">
+		            <label class="col-md-2 control-label"> State: </label>
+		            <div class="col-md-6">
+		              <select id="hometown.state" class="form-control reg-select" name="hometown.state" selected="selected">
+		                <option value="" <%= userdata.hometown.state ? "" : "selected" %>>Select State</option>
+		                <% for(var i in states) { %>	                  
+		                <option value="<%= states[i].name %>" <%= (userdata.hometown.state=== states[i].name) ? "selected" : "" %>  ><%= states[i].name %></option>	                  
+		                <% } %>
+	                </select>
 		            </div>
 		          </div>
 		          <div class="form-group">
-		            <div class="col-lg-8">
-		              <input class="form-control" type="text" value="" name="firstname" placeholder="State">
+		            <label class="col-md-2 control-label"> City: </label>
+		            <div class="col-md-6">
+		              <select id="hometown.city" class="form-control reg-select" name="hometown.city" selected="selected">
+		                <option value="" <%= userdata.hometown.city ? "" : "selected" %>>Select City</option>
+		                <% for(var i in cities) { %>	                  
+		                <option value="<%= cities[i].name %>" <%= (userdata.hometown.city=== cities[i].name) ? "selected" : "" %>  ><%= cities[i].name %></option>	                  
+		                <% } %>
+	                </select>
 		            </div>
 		          </div>
 		          <div class="form-group">
-		            <div class="col-lg-8">
-		              <input class="form-control" type="text" value="" name="firstname" placeholder="Pin code">
+		            <label class="col-md-2 control-label"> Pin: </label>
+		            <div class="col-md-6">
+		              <input class="form-control" type="text" value="<%= userdata.hometown.pin %>" name="hometown.pin" placeholder="Pin code">
 		            </div>
 		          </div>
 
@@ -167,40 +228,62 @@
 
 
 		    </div> <!-- addressinfo -->
-		    <div id="donorinfo" class="tab-pane fade in">
+		    <div id="donorinfo" class="tab-pane fade in donortab">
 			  <div class="form-group">
-	            <label class="col-lg-3 control-label">Blood Group:</label>
-	            <div class="col-lg-8">
+			    <label class="col-md-4 control-label"> BloodGroup: </label>	            
+	            <div class="col-md-4">
 	              <div class="ui-select">
-	                <select id="user_bg" class="form-control" name="bloodgroup">
-	                  <option value="A+">A+</option>
-	                  <option value="A-">A-</option>
-	                  <option value="B+">B+</option>
-	                  <option value="B-">B-</option>
-	                  <option value="AB+">AB+</option>
-	                  <option value="AB-" selected="selected">AB-</option>
-	                  <option value="O+">O+</option>
-	                  <option value="O-">O-</option>
+	                <select id="user_bg" class="form-control reg-select" name="donorProfile.bloodgroup" selected="selected">
+	                <option value="" <%= userdata.donorProfile.bloodgroup ? "" : "selected" %>>Blood Group</option>
+	                <% for(var i in bgs) { %>	                  
+	                  <option value="<%= bgs[i].name %>" <%= (userdata.donorProfile.bloodgroup=== bgs[i].name) ? "selected" : "" %>  ><%= bgs[i].name %></option>	                  
+	                  <% } %>
 	                </select>
 	              </div>
 	            </div>
 	          </div>
-	          <div class="form-group">
-	            <div class="col-md-8">
-	              <input class="form-control" type="text" value="<%=lastdonation%>" name="lastdonation" placeholder="Last Donated on">
+	          <div class="form-group">	
+	            <label class="col-md-4 control-label"> Last Donated on: </label>	            
+	            <div class="col-md-4">
+	              <input class="form-control" type="date" value="<%=userdata.donorProfile.lastdonation %>" name="donorProfile.lastdonation" placeholder="Last Donated on">
 	            </div>
 	          </div>
 	          <div class="form-group">
-	            <label class="col-md-3 control-label">Donations in last 1 year:</label>
-	            <div class="col-lg-8">
+	            <label class="col-md-4 control-label"> Donations in last 1 year: </label>	           
+	            <div class="col-md-4">
 	              <div class="ui-select">
-	                <select id="user_donations" class="form-control" name="donations">
-	                  <option value="0" selected="selected">0</option>
-	                  <option value="1">1</option>
-	                  <option value="2">2</option>
-	                  <option value=">2">>2</option>
+	                <select id="donorProfile.donations" class="form-control" name="donorProfile.donations">
+	                  <option value="" <%= userdata.donorProfile.donations ? "" : "selected" %>>Donations in last 1 year</option>	                  	                 	
+	                  <option value="0" <%= (userdata.donorProfile.donations === 0) ? "selected" : "" %> > 0 </option>
+	                  <option value="1" <%= (userdata.donorProfile.donations === 1) ? "selected" : "" %> > 1 </option>
+	                  <option value="2" <%= (userdata.donorProfile.donations === 2) ? "selected" : "" %> > 2 </option>
+	                  <option value=">2" <%= (userdata.donorProfile.donations > 2) ? "selected" : "" %> > >2 </option>
 	                </select>
 	              </div>
+	            </div>
+	          </div>
+	          <div class="form-group">	
+	            <label class="col-md-4 control-label"> Share Email?: </label>	            
+	            <div class="col-md-4">
+	              <input class="form-control" type="checkbox" <%= userdata.donorProfile.shareemail ? "checked":"" %> name="donorProfile.shareemail">
+	            </div>
+	          </div>
+	          <div class="form-group">	
+	            <label class="col-md-4 control-label"> Share Phone?: </label>	            
+	            <div class="col-md-4">
+	              <input class="form-control" type="checkbox" <%= userdata.donorProfile.sharephone ? "checked":"" %> name="donorProfile.sharephone">
+	            </div>
+	          </div>
+	          <div class="form-group">	
+	            <label class="col-md-4 control-label"> Receive Email?: </label>	            
+	            <div class="col-md-4">
+	              <input class="form-control" type="checkbox" <%= userdata.donorProfile.receiveemail ? "checked":"" %> name="donorProfile.receiveemail">
+	            </div>
+	          </div>
+	          <div class="form-group">	
+	            <label class="col-md-4 control-label"> Receive SMS?: </label>	            
+	            <div class="col-md-4">
+	              <input class="form-control" type="checkbox" <%= userdata.donorProfile.receivesms ? "checked":"" %> name="donorProfile.receivesms">
 	            </div>
 	          </div>
 

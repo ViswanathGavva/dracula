@@ -18,7 +18,7 @@
 }
 .form-signin .form-control {
   position: relative;
-  height: auto;
+  /*height: auto;*/
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
@@ -44,6 +44,10 @@
 }
 
 /*Viswa custom*/
+.form-signin select {
+  height:34px;!important;
+}
+
 .search-map {
 height:400px;!important;
 }
@@ -134,7 +138,7 @@ a:focus {
 }
 
 .profile-info ul {
-	padding: 15px;
+	padding:15px;
 }
 
 .nav-pills>li {
@@ -161,7 +165,7 @@ a:focus {
     border-color: #9d081a; 
 }
 .profile-form {
-	margin-left:20px;
+	margin-left:20px;	
 }
 
 .alert-info {
@@ -177,4 +181,34 @@ a:focus {
 .form-group.required .sr-only:after {
   content:"*";
   color:red;
+}
+
+.container {
+ height:100vh;
+}
+.container .content {
+height:80vh;
+}
+
+.container .footer {
+height:10vh;
+}
+.container .header{
+height:10vh;
+}
+
+/*.reg-select {
+height:44px;	
+}*/
+
+.donortab {
+	margin-left:10px;
+}
+.address-form {
+	padding:25px;
+}
+
+.profile-img{
+	height:100px;
+	width:100px;
 }
