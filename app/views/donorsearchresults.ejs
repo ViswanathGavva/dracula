@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/signin.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/searchresults.js"></script>
+    <script type="text/javascript" charset="utf-8">
+    	function loadMap(){
+			//$('#map').show();
+			
+			searchresults.loadMap();
+			//alert(city);
+		}
+    </script>
+</head>
+
+<body class="bg-backgroundmain">
+<!--<header class="container-fluid text-center">
+  <div class="container-fluid">
+  <p>Donate blood. Save life.</p>
+  </div>
+</header>-->
+<div class="container">
+
+<div class="row">
+<% include partials/navbar %>
+</div>
+
+<div class="row">
+	<% for(var i in messages) { %>
+		<div class="flash">
+			<%= messages[i] %>
+		</div>
+	<% } %>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+        		<div class="text-center">
+        		    <h3>Search Results</h3>
+        		    <table class="table">
+    					<thead>
+      					<tr>
+        					<th>Name</th>
+        					<th>Email</th>
+        					<th>Phone</th>
+      					</tr>
+    					</thead>
+    					<tbody>
+          		    <% for(var i in donors) { %>	
+          		    	<tr>
+        					<td><%= donors[i].name %></td>
+        					<td><%= donors[i].email %></td>
+        					<td><%= donors[i].phone %></td>
+    					</tr>                      		              
+		                <% } %>
+        		</table>
+        		</div>
+	        </div>
+	        <div class="col-md-6 search-map">     	        	
+        		<div class="search-map">
+        			<div class="search-map" id="map" height="200px">
+        			</div>
+        		</div>        
+	        </div>
+	        
+		</div><!--row-->
+	</div><!--container-->
+</div><!--row-->
+
+<div class="row">
+<% include partials/footer %>
+</div>
+
+</div><!--container-->
+<script>
+	//$(document).ready(loadMap);
+	
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?callback=loadMap"></script>
+</body>
+</html>

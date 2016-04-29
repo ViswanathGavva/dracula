@@ -50,6 +50,7 @@
 
 .search-map {
 height:400px;!important;
+/*margin-left: 15px;*/
 }
 
 .navbar-inverse {
@@ -211,4 +212,13 @@ height:44px;
 .profile-img{
 	height:100px;
 	width:100px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  /*width: 100%;*/
+  /* Set the fixed height of the footer here 
+  height: 60px;*/
+ 
 }

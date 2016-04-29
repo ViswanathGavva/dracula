@@ -52,7 +52,7 @@ module.exports = function() {
 	require('../app/routes/index.server.routes.js')(app);
 	require('../app/routes/users.server.routes.js')(app);
 	require('../app/routes/error.server.routes.js')(app);
-	//require('../app/routes/bloodrequest.server.routes.js')(app);
+	require('../app/routes/bloodrequest.server.routes.js')(app);
 
 	app.use(express.static('./public'));
 

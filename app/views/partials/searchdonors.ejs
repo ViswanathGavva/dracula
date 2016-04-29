@@ -1,58 +1,98 @@
 <div class="row">
 
-	<div class="container">		
+	<div class="container">	
 		<div class="col-md-6">
+		
+		<% if(messages.length>0){ %>
+	    <div class="alert alert-info alert-dismissable">
+	    <% for(var i in messages) { %>
+            <i class="fa fa-coffee"></i>
+			  <div class="flash">
+				<%= messages[i] %>
+			  </div>
+
+				<% } %>
+			</div>
+	    <% } %>
+	    
 	        <div class="text-center">    	      
-    	      <form class="form-horizontal" action="/bgrequest" method="post">	        	        
+    	      <form class="form-horizontal" action="/bloodrequest" method="post">	        	        
 		        <div class="form-group">
-					<label class="col-lg-3 control-label"> Blood Group: </label> 
+					<label class="col-lg-4 control-label"> Blood Group: </label> 
+					
+					
+					
 					<div class="col-lg-8">
 						<div class="ui-select">
-							<select id="req_bg" class="form-control" name="patientbloodgroup">
-								<option value="A+"> A+ </option>
-								<option value="A-"> A- </option>
-								<option value="B+"> B+ </option>
-								<option value="B-"> B- </option>
-								<option value="AB+"> AB+ </option>
-								<option value="AB-" selected="selected"> AB- </option>
-								<option value="O+"> O+ </option>
-								<option value="O-"> O- </option>
-							</select>
+							
+							
+							<select id="p_bg" class="form-control reg-select" name="pbg" selected="selected">
+	                			<option value="" <%= formdata['pbg'] ? "" : "selected" %>>Blood Group</option>
+	                			<% for(var i in bgs) { %>	                  
+	                  			<option value="<%= bgs[i].name %>" <%= (formdata['pbg']=== bgs[i].name) ? "selected" : "" %>  ><%= bgs[i].name %></option>	                  
+	                  			<% } %>
+	                		</select>
+							
 						</div>
 					</div>
 				</div>
 
           		<div class="form-group">
-            		<label class="col-lg-3 control-label">Patient name:</label>
+            		<label class="col-lg-4 control-label">Patient name:</label>
             		<div class="col-lg-8">
-              			<input class="form-control" type="text" value="" name="patientname">
+              			<input class="form-control" type="text" value="<%= formdata.pname %>" name="pname" placeholder="Name">
             		</div>
           		</div>          
           		<div class="form-group">
-            		<label class="col-lg-3 control-label">Patient Age:</label>
+            		<label class="col-lg-4 control-label">Patient Age:</label>
             		<div class="col-lg-8">
-              			<input class="form-control" type="text" value="" name="patientage">
+              			<input class="form-control" type="text" value="<%= formdata.page %>" name="page" placeholder="Age">
             		</div>
           		</div>          
           		<div class="form-group">
-            		<label class="col-lg-3 control-label">Hospital:</label>
+            		<label class="col-lg-4 control-label">Hospital:</label>
             		<div class="col-lg-8">
-              			<input class="form-control" type="text" value="" name="patienthospital">
+              			<input class="form-control" type="text" value="<%= formdata.phospital %>" name="phospital" placeholder="Hospital">
             		</div>
           		</div>          
 
           		<div class="form-group">
-            		<label class="col-lg-3 control-label">Patient Location:</label>
+            		<label class="col-lg-4 control-label">Patient Location:</label>
             		<div class="col-lg-8">
-              			<input class="form-control" type="text" value="" name="area">
-              			<input class="form-control" type="text" value="" name="city">
-              			<input class="form-control" type="text" value="" name="state">
-              			<input class="form-control" type="text" value="" name="pincode">              			
+            			<div class="form-group col-lg-12">
+            			<label class="sr-only">Area:</label>
+              			<input class="form-control" type="text" value="<%= formdata.parea %>" name="parea" placeholder="area">
+              			</div>
+              			
+              			<div class="form-group col-lg-12">
+            			<label class="sr-only">State:</label>
+              			<select id="p_state" class="form-control reg-select" name="pstate" selected="selected">
+	                			<option value="" <%= formdata['pstate'] ? "" : "selected" %>>Select State</option>
+	                			<% for(var i in states) { %>	                  
+	                  			<option value="<%= states[i].name %>" <%= (formdata['pstate']=== states[i].name) ? "selected" : "" %>  ><%= states[i].name %></option>	                  
+	                  			<% } %>
+	                	</select>
+              			</div>
+              			
+              			<div class="form-group col-lg-12">
+            			<label class="sr-only">City:</label>
+              			<select id="p_city" class="form-control reg-select" name="pcity" selected="selected">
+	                			<option value="" <%= formdata['pcity'] ? "" : "selected" %>>Select City</option>
+	                			<% for(var i in cities) { %>	                  
+	                  			<option value="<%= cities[i].name %>" <%= (formdata['pcity']=== cities[i].name) ? "selected" : "" %>  ><%= cities[i].name %></option>	                  
+	                  			<% } %>
+	                	</select>
+              			</div>
+              			
+              			<div class="form-group col-lg-12">
+            			<label class="sr-only">Pin:</label>
+              			<input class="form-control" type="text" value="<%= formdata.ppin %>" name="ppin" placeholder="Pin">              			
+              			</div>
             		</div>
           		</div>          
 				<div class="form-group">
 		            <div class="col-md-12">
-    	          		<input type="submit" class="btn btn-primary" value="Save Changes">
+    	          		<input type="submit" class="btn btn-primary" value="Search">
         	      		<span></span>
             	  		<input type="reset" class="btn btn-default" value="Reset">
             		</div>	

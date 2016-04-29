@@ -130,7 +130,7 @@ exports.stateByName = function(req, res, next, name) {
 exports.renderRegister = function(req, res, next) {
 	
 	if (!req.user) {		
-		getBgs(req,res,function(err){
+		this.getBgs(req,res,function(err){
 			if(err){
 				return res.redirect('/error');
 			}
