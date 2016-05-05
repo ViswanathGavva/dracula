@@ -9,7 +9,41 @@
     <script type="text/javascript" charset="utf-8">
     	function loadMap(){
 			//$('#map').show();
+			var scity='<%= scity ? scity : '' %>',
+			 sstate='<%= sstate ? sstate : '' %>',
+			 sarea='<%= sarea ? sarea : '' %>',
+			 spin='<%= spin ? spin : '' %>';
+			 
+			var donors = [];
 			
+			results = <%- JSON.stringify(donors) %>;
+			
+			var value={};
+			
+			for(var k=0;k<results.length;k++){
+			 value = results[k];
+			 if(value.curlocation.city === scity && value.curlocation.state === sstate){
+			 donors.push({"name":value.name,"phone":value.phone,"pin":value.curlocation.pin,"area":value.curlocation.area,"city":value.curlocation.city,"state":value.curlocation.state});
+			 }else if(value.hometown.city === scity && value.hometown.state === sstate){
+			 donors.push({"name":value.name,"phone":value.phone,"pin":value.hometown.pin,"area":value.hometown.area,"city":value.hometown.city,"state":value.hometown.state});
+			 }else if(value.officelocation.city === scity && value.officelocation.state === sstate){
+			 donors.push({"name":value.name,"phone":value.phone,"pin":value.officelocation.pin,"area":value.officelocation.area,"city":value.officelocation.city,"state":value.officelocation.state});
+			 }else{
+			 donors.push({"name":value.name,"phone":value.phone,"pin":value.curlocation.pin,"area":value.curlocation.area,"city":value.curlocation.city,"state":value.curlocation.state});
+			 }
+			}
+			
+			
+			
+			var config = {
+			results: donors,
+			mapEle :'map',
+			city:scity,
+			state:sstate,
+			area:sarea,
+			pin:spin
+			};
+			searchresults.init(config);		
 			searchresults.loadMap();
 			//alert(city);
 		}
@@ -74,10 +108,6 @@
 </div>
 
 </div><!--container-->
-<script>
-	//$(document).ready(loadMap);
-	
-</script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?callback=loadMap"></script>
 </body>
 </html>

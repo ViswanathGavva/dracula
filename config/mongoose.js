@@ -7,7 +7,7 @@ module.exports = function() {
 	require('../app/models/user.server.model');
 	require('../app/models/bloodrequest.server.model');
 	require('../app/models/bg.server.model');
-	//require('../app/models/bloodbank.server.model');
+	require('../app/models/bloodbank.server.model');
 	require('../app/models/city.server.model');
 	require('../app/models/state.server.model');
 

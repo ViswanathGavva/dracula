@@ -34,19 +34,21 @@ exports.renderBloodRequest = function(req,res){
 						}
 						else{
 							var formdata= req.session.formdata ? req.session.formdata:'';
-							var focusele = req.session.focusele ? req.session.focusele:'name';		
+							var focusele = req.session.focusele ? req.session.focusele:'bloodgroup';		
 							delete req.session.formdata;
-							delete req.session.focusele;
-								
+							delete req.session.focusele;	
+							//console.log(req.flash('info'));							
 							res.render('bloodrequest',{
 							user: req.user ? req.user.username : '',
 							title: 'Submit Request',
+							validateErrorMessages: req.flash('validationError'),
 							formdata: formdata,
 							focusele: focusele,
 							bgs: req.Bgs,
 							states: req.states,
 							cities:req.cities,
-							messages: req.flash('error') || req.flash('info')	
+							messages: req.flash('info')	,
+							errors: req.flash('error')
 							});
 						}
 					});//End GetCities.		
@@ -54,19 +56,37 @@ exports.renderBloodRequest = function(req,res){
 			});//End getStates.
 		}
 	});//End getBgs.
-	return res.redirect('/');
+	//return res.redirect('/');
 };
 
 var getDonors = function(req,res,next){
+//console.log(req.body.pcity);
 	var findreq = {
 			'donorProfile.bloodgroup':req.body.pbg
 	};
-	User.find({'donorProfile.bloodgroup':req.body.pbg},function(err,donors){
+	User.find({'donorProfile.bloodgroup':req.body.pbg})
+	.and([
+	{
+	 $or:[
+	 		{'curlocation.city':req.body.pcity},
+	 		{'hometown.city':req.body.pcity},
+	 		{'officelocation.city':req.body.pcity}
+	 	 ]
+	}/*,
+	{
+	 'role':'Donor'		
+	}*/
+	]).exec(function(err,donors){
 	
 		if( err || donors.length <= 0 ){		
 			return next({'err':'No donors'});
 		}
 		else{
+			//set phone and email based on donor preferences
+			for(var key in donors){
+			donors[key].phone = donors[key].donorProfile.sharephone ? donors[key].phone : 'Hidden';
+			donors[key].email = donors[key].donorProfile.shareemail ? donors[key].email : 'Hidden';
+			}
 			req.donors=donors;
 			next();
 		}
@@ -78,11 +98,9 @@ exports.renderDonorSearchResults = function(req,res){
 if(!req.body.pbg || !req.body.pcity)
 {
 	req.flash('error','Bloodgroup and City are mandatory');
-	res.render('index', {
-    	title: 'DRACULA',
-    	user: req.user ? req.user.username : '',
-    	messages: req.flash('error') || req.flash('info')
-	});
+	req.session.formdata=req.body;
+	req.session.focusele='p_bg';
+	res.redirect('/');
 }
 else
 {
@@ -101,9 +119,46 @@ else
     			title: 'DRACULA',
     			user: req.user ? req.user.username : '',
     			donors: req.donors,
+    			scity:req.body.pcity ? req.body.pcity : '',
+    			sstate:req.body.pstate ? req.body.pstate : '',
+    			sarea:req.body.parea ? req.body.parea : '',
+    			spin:req.body.ppin ? req.body.ppin : '',
     			messages: req.flash('error') || req.flash('info')
 			});
 		}
 	});//getDonors End;
 }
 };
+
+exports.saveBloodRequest = function(req,res){
+	
+	req.checkBody('bloodgroup','BloodGroup is mandatory').notEmpty();	
+	req.checkBody('pstate','State').notEmpty();
+	req.checkBody('pcity','City is required').notEmpty();
+	
+	var errors = req.validationErrors();
+	if(errors){				
+		//console.log(errors);
+		req.flash('validationError', errors);
+		//console.log(req.body);
+		req.session.formdata=req.body;
+		req.session.focusele=errors[0].param;
+		return res.redirect('/bloodrequest');
+	}
+	else{
+		var BR = new BloodRequest(req.body);
+		BR.save(function(err) {
+			if(err){
+				req.session.formdata=req.body;
+				req.flash('error','Error in save request');
+				res.redirect('/bloodrequest');
+			}
+			else{
+				req.session.formdata=req.body;
+				req.flash('info','Request saved successfully');
+				res.redirect('/bloodrequest');
+			}
+		});
+	}
+
+}

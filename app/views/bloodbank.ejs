@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/signin.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/searchresults.js"></script>
+    <script type="text/javascript" charset="utf-8">
+    	function loadMap(){
+			//$('#map').show();
+			
+			var bbs = [];
+			
+			results = <%- JSON.stringify(bloodbanks) %>;			
+			
+			for(var k=0;k<results.length;k++){
+			 bbs.push({"name":results[k].name,
+			 		   "phone":results[k].phone,
+			 		   "pin":results[k].pin,
+			 		   "area":results[k].address,
+			 		   "city":results[k].city,
+			 		   "state":results[k].state});			 
+			}
+			
+			
+			
+			var config = {
+			results: bbs,
+			mapEle :'map',
+			city:"Bangalore",
+			state:"Karnataka",
+			area:"Electronic city",
+			pin:""
+			};
+			searchresults.init(config);		
+			searchresults.loadMap();
+
+		}
+    </script>
+</head>
+
+<body class="bg-backgroundmain">
+<!--<header class="container-fluid text-center">
+  <div class="container-fluid">
+  <p>Donate blood. Save life.</p>
+  </div>
+</header>-->
+<div class="container">
+
+<div class="row">
+<% include partials/navbar %>
+</div>
+
+<div class="row">
+	<% for(var i in messages) { %>
+		<div class="flash">
+			<%= messages[i] %>
+		</div>
+	<% } %>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+        		<div class="text-center">
+        		    <h3>BloodBanks</h3>
+        		    <table class="table">
+    					<thead>
+      					<tr>
+      						<form class="form-horizontal" action="/searchbloodbank" method="post">
+        					<th><input class="form-control" type="text" value="<%= formdata.name %>" name="name" placeholder="Name">          						
+          					</th>
+        					<th><input class="form-control" type="text" value="<%= formdata.state %>" name="state" placeholder="State">
+          					</th>
+        					<th><input class="form-control" type="text" value="<%= formdata.city %>" name="city" placeholder="City">
+          					</th>
+        					<th>Address
+          					</th>
+          					<th>ContactInfo
+          					</th>
+          					<th>
+            					<input type="submit" class="btn btn-primary" value="Filter">          						
+          					</th>
+          					</form>
+      					</tr>
+    					</thead>
+    					<tbody>
+          		    <% for(var i in bloodbanks) { %>	
+          		    	<tr>
+        					<td><%= bloodbanks[i].name %></td>
+        					<td><%= bloodbanks[i].state %></td>
+        					<td><%= bloodbanks[i].city %></td>
+        					<td><%= bloodbanks[i].address %></td>
+        					<td><%= bloodbanks[i].email %><br><%= bloodbanks[i].phone %></td>
+        					<td>  </td>
+    					</tr>                      		              
+		                <% } %>
+        		</table>
+        		</div>
+	        </div>
+	        <div class="col-md-6 search-map">     	        	
+        		<div class="search-map">
+        			<div class="search-map" id="map" height="200px">
+        			</div>
+        		</div>        
+	        </div>
+	        
+		</div><!--row-->
+	</div><!--container-->
+</div><!--row-->
+
+<div class="row">
+<% include partials/footer %>
+</div>
+
+</div><!--container-->
+<script async defer src="https://maps.googleapis.com/maps/api/js?callback=loadMap"></script>
+</body>
+</html>

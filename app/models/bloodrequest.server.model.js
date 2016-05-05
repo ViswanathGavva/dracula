@@ -3,25 +3,27 @@ var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
 
 var BloodreqSchema = new Schema({
-	creator: String,
+	creator: {
+		type:String,
+		default:'guest'
+		},
 	opendate: {
 		type: Date,
 		default: Date.now
-	},
-	reqData: {
-		bloodgroup: String,
-		patientdata: {
-		name: String,
-		age: String
+	},	
+	bloodgroup: String,
+	unitsrequired:Number,
+	pname: String,
+	page: String,			
+	pcity: String,
+	pstate: String,
+	parea: String,
+	ppin: String,
+	phospital: String,
+	ondate:{
+		type: Date,
+		default: Date.now
 		},
-		location: {
-			city: String,
-			state: String,
-			area: String,
-			pincode: String
-		},
-		hospital: String
-	},
 	closedate: {
 		type: Date,
 		default: Date.now

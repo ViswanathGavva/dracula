@@ -7,11 +7,11 @@ var multipartMiddleware = multipart();
 
 
 module.exports = function(app) {
-	app.route('/users').post(users.create).get(users.list);
+	//app.route('/users').post(users.create).get(users.list);
 
-	app.route('/users/:userId').get(users.read).put(users.update).delete(users.delete);
+	//app.route('/users/:userId').get(users.read).put(users.update).delete(users.delete);
 
-	app.param('userId', users.userByID);
+	//app.param('userId', users.userByID);
 
 	app.route('/register')
 		.get(users.renderRegister)
@@ -38,22 +38,19 @@ module.exports = function(app) {
 		scope:['email']
 	}));
 
-	app.get('/oauth/twitter', passport.authenticate('twitter', {
+	/*app.get('/oauth/twitter', passport.authenticate('twitter', {
 		failureRedirect: '/login'
 	}));
 
 	app.get('/oauth/twitter/callback', passport.authenticate('twitter', {
 		failureRedirect: '/login',
 		successRedirect: '/'
-	}));
+	}));*/
 	
 	app.route('/profile')
 		.get(users.renderProfile)
 		.post(users.requiresLogin,users.saveProfile);
-	/*app.post('/upload', multipartMiddleware, function(req, resp) {
-		  console.log(req.body, req.files);
-		  // don't forget to delete all req.files when done
-		});*/
+	
 	app.route('/uploadprofilepic')
 		.post(multipartMiddleware,users.requiresLogin,users.uploadProfilePic);
 	

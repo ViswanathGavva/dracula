@@ -5,6 +5,7 @@ var User = require('mongoose').model('User'),
 	passport = require('passport'),
 	ds = require('../../app/services/dataservices.server.service'),
 	fs = require('fs');
+	logger = require('../../config/logger');
 exports.renderIndex = function(req, res) {
 	ds.getBgs(req,res,function(err){
 		if(err){
@@ -20,10 +21,12 @@ exports.renderIndex = function(req, res) {
 				else{
 					ds.getCities(req,res,function(err){
 						if(err){
+							logger.error(err);
 							res.redirect('/');
 							res.end();
 						}
-						else{
+						else{													
+							//logger.info("This is inside index controller",req.states);
 							var formdata= req.session.formdata ? req.session.formdata:'';
 							var focusele = req.session.focusele ? req.session.focusele:'p_bg';		
 							delete req.session.formdata;

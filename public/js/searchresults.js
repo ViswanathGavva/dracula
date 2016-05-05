@@ -1,28 +1,20 @@
 searchresults = function(){
+//local variables.
+var city;
+var country='India';
+var mapEle;
+var searchResults;
 
-
-var city = "Bangalore";
-var country = "India";
-var searchResults = [
-    {
-    	"area":"IndiraNagar",
-    	"resultCount":12
-    },
-    {
-    	"area":"Electronic city",
-    	"resultCount":5
-    },
-    {
-    	"area":"Varthur",
-    	"resultCount":1
-    },
-    {
-    	"area":"Marathahalli",
-    	"resultCount":3
-    }
-    
-    ];
 var citymap ={};
+
+//initialise local variables.
+init = function(config){
+	searchResults = config.results;
+	mapEle = config.mapEle;
+	city=config.city;
+	state=config.state;
+
+}
 
 //Function to populate the empty object from search results.This function does not do any thing thing really. We can ommit this OR add some more functionality as needed.
 function populatecityMap(){
@@ -30,7 +22,7 @@ $.each( searchResults, function( key, value ) {
   var area = value.area; 
   var areaObj = {};
   areaObj.address=area+","+city+","+country;
-  areaObj.count=value.resultCount; 
+  //areaObj.count=value.resultCount; 
   citymap[area] = areaObj;
 
 });
@@ -42,9 +34,10 @@ var loadMap = function(){
   // Create the map.
   geocoder.geocode( {'address': city+","+country}, function(results, status) {
   
-   map = new google.maps.Map(document.getElementById('map'), {
+  //load the map for the search city and state.
+   map = new google.maps.Map(document.getElementById(mapEle), {
     zoom: 12,
-    center: results[0].geometry.location,//This is hard coded to bangalore,India. Change this to get the lat lang based on city and country.
+    center: results[0].geometry.location,
     mapTypeId: google.maps.MapTypeId.TERRAIN
   });
   });
@@ -53,8 +46,8 @@ var loadMap = function(){
   //Now populate the cityMap object from search results.
   populatecityMap();
 
-  // Construct the circle for each value in citymap.
-  // Note: We create circle based on the count variable in citymap.area object. Use radius parameter below to control the size of the circle.
+
+
   
   // Loop through each value in citymap object using foreach with a call back to avoid unexpected event queing.
   
@@ -64,7 +57,7 @@ var loadMap = function(){
 
     if (status === google.maps.GeocoderStatus.OK) {
     // Add the circle for this area to the map.
-      var cityCircle = new google.maps.Circle({
+     /* var cityCircle = new google.maps.Circle({
       strokeColor: '#FF0000',
       strokeOpacity: 0.8,
       strokeWeight: 2,
@@ -73,7 +66,14 @@ var loadMap = function(){
       map: map,
       center: results[0].geometry.location,
       radius: Math.sqrt(value.count) * 1000
-    });
+    });*/
+    //Add a donation marker
+    var marker = new google.maps.Marker({
+    	position: results[0].geometry.location,
+    	icon: '../img/bdropicon.png',
+    	map: map
+ 	 	});
+    map.setCenter(results[0].geometry.location);
     } else {
       alert("error"+status);//google geocoder api failed.
     }
@@ -84,7 +84,8 @@ var loadMap = function(){
  };//End function loadMap
  	
 return {
-	loadMap:loadMap
+	loadMap:loadMap,
+	init:init
 	}
 	
 }();

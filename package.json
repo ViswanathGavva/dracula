@@ -32,7 +32,9 @@
     "passport-facebook": "^1.0.3",
     "passport-local": "^1.0.0",
     "passport-twitter": "^1.0.2",
-    "connect-multiparty": "^2.0.0"
+    "connect-multiparty": "^2.0.0",
+    "winston":"^2.2.0",
+    "morgan": "^1.1.1"
   },
   "devDependencies": {
     "express-validator": "^2.19.1",

@@ -4,7 +4,8 @@ var config = require('./config'),
 	passport = require('passport'),
 	flash = require('connect-flash'),
 	session = require('express-session'),
-	validator = require('express-validator');
+	validator = require('express-validator'),
+	logger = require('./logger');
 
 module.exports = function() {
 	var app = express();
@@ -12,7 +13,9 @@ module.exports = function() {
 	app.use(bodyParser.urlencoded({
 		extended: true
 	}));
-
+	
+	logger.info("inside express config");
+	
 	app.use(bodyParser.json());
 	//app.use(bodyParser({ keepExtensions: true, uploadDir: __dirname + '/public/uploads'}));
 	//Added by Viswa
@@ -53,6 +56,7 @@ module.exports = function() {
 	require('../app/routes/users.server.routes.js')(app);
 	require('../app/routes/error.server.routes.js')(app);
 	require('../app/routes/bloodrequest.server.routes.js')(app);
+	require('../app/routes/bloodbank.server.routes.js')(app);
 
 	app.use(express.static('./public'));
 
