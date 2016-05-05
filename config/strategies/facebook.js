@@ -9,13 +9,14 @@ module.exports = function() {
 		clientID: config.facebook.clientID,
 		clientSecret: config.facebook.clientSecret,
 		callbackURL: config.facebook.callbackURL,
+		profileFields: ['email'],
 		passReqToCallback: true
 	},
 	function(req, accessToken, refreshToken, profile, done) {
 		var providerData = profile._json;
 		providerData.accessToken = accessToken;
 		providerData.refreshToken = refreshToken;
-
+		console.log(profile);
 		var providerUserProfile = {
 			name: profile.name.givenName,
 			email: profile.emails[0].value,

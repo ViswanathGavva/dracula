@@ -1,14 +1,19 @@
 var port = 1337;
 
-/*module.exports = {
-	port: port,
-	db: 'mongodb://localhost/dracula'
-};*/
-
 module.exports = {
+	port: port,
+	db: 'mongodb://localhost/dracula',
+	facebook:{
+		clientID: '584851015013943',
+        clientSecret: 'b05a783a833e73c29df7a1ae9e21b74c',
+        callbackURL: 'http://localhost:'+ port +'/oauth/facebook/callback'
+	}
+};
+
+/*module.exports = {
 	port:15878,
 	db: 'mongodb://dracula:Dracula_098123@ds015878.mlab.com:15878/dracula'
-};
+};*/
 
 
 /*
@@ -53,6 +58,8 @@ mongorestore -h ds015878.mlab.com:15878 -d dracula -u dracula -p Dracula_098123 
 mongorestore -h ds015878.mlab.com:15878 -d dracula -u dracula -p Dracula_098123 users.bson
 
 
-
+FB auth:
+AppID: 584851015013943
+App Secret:b05a783a833e73c29df7a1ae9e21b74c
 
 */
