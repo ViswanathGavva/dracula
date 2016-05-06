@@ -20,6 +20,7 @@ var BloodreqSchema = new Schema({
 	parea: String,
 	ppin: String,
 	phospital: String,
+	reqdesc:String,
 	ondate:{
 		type: Date,
 		default: Date.now

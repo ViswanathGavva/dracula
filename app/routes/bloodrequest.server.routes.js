@@ -5,4 +5,8 @@ module.exports = function(app) {
 	app.route('/bloodrequest')
 	.get(bloodrequest.renderBloodRequest)
 	.post(bloodrequest.saveBloodRequest);
+	
+	app.route('/sendRequest')
+	.post(bloodrequest.sendRequest)
+	.get(bloodrequest.sendRequest);
 };	

@@ -5,8 +5,13 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/signin.css" rel="stylesheet">
     <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
     <script src="js/searchresults.js"></script>
     <script type="text/javascript" charset="utf-8">
+    
+   
+
+    
     	function loadMap(){
 			//$('#map').show();
 			var scity='<%= scity ? scity : '' %>',
@@ -79,6 +84,7 @@
         					<th>Name</th>
         					<th>Email</th>
         					<th>Phone</th>
+        					<th>Send Request</th>
       					</tr>
     					</thead>
     					<tbody>
@@ -87,10 +93,43 @@
         					<td><%= donors[i].name %></td>
         					<td><%= donors[i].email %></td>
         					<td><%= donors[i].phone %></td>
+        					<td><a href="#myModal" role="button" class="btn" data-toggle="modal">Request</a></td>
     					</tr>                      		              
 		                <% } %>
         		</table>
+        		
+        			
+					
+					<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-lg">
+
+						
+						<div class="modal-body">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+								<h3 id="myModalLabel">Send Request to Donor(s)</h3>
+								
+							<form class="form-horizontal" action="/sendRequest" method="post">
+					          <input type="hidden" value="" id="donors">
+					          <div class="form-group">
+            					<label class="col-lg-4 control-label">Description:</label>
+            					<div class="col-lg-8">
+              						<textarea class="form-control" name="reqdesc" placeholder="Please enter contact info and other info">
+              						</textarea>
+            					</div>
+          					  </div>
+					    		<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+					    		<button class="btn btn-primary">Request</button>
+
+							</form>
+						</div>
+					</div>
+					</div>
+        		
         		</div>
+        		
+        		
+
+
 	        </div>
 	        <div class="col-md-6 search-map">     	        	
         		<div class="search-map">

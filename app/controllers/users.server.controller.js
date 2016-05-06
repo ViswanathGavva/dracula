@@ -3,7 +3,8 @@ var User = require('mongoose').model('User'),
 	State = require('mongoose').model('State'),
 	City = require('mongoose').model('City'),
 	passport = require('passport'),
-	fs = require('fs');;
+	fs = require('fs'),
+	logger = require('../../config/logger');
 
 var getErrorMessage = function(err) {
 	var message = '';
@@ -98,8 +99,7 @@ var getCities = function(req,res,next){
 	});
 };
 
-exports.listCities = function(req, res) {
-	//console.log(req.state._id);
+exports.listCities = function(req, res) {	
 	City.find({"state":req.state._id},function(err,cities){
 	if(err){
 		 res.json(err);
@@ -146,7 +146,6 @@ exports.renderRegister = function(req, res, next) {
 					var focusele = req.session.focusele ? req.session.focusele:'name';		
 					delete req.session.formdata;
 					delete req.session.focusele;
-					//console.log(formdata);
 					res.render('register', {
 						title: 'Register Form',
 						saveErrorMessages: req.flash('saveError'),
@@ -195,12 +194,9 @@ exports.register = function(req, res, next) {
 		  // check the validation object for errors
 		  var errors = req.validationErrors();
 
-		  //console.log(errors);
 
 		  if (errors) {
-		  //console.log(errors);
 		    req.flash('validationError', errors);
-		    //console.log(req.body);
 				req.session.formdata=req.body;
 				req.session.focusele=errors[0].param;
 		    return res.redirect('/register');				
@@ -214,7 +210,6 @@ exports.register = function(req, res, next) {
 
 			user.save(function(err) {
 			if (err) {
-				//console.log(err);
 				var message = getErrorMessage(err);
 				req.flash('saveError', message);
 				req.session.formdata=req.body;
@@ -375,7 +370,6 @@ exports.renderProfile = function(req, res) {
 					if(err){
 						return res.redirect('/error');
 					}
-					//console.log(req.user);
 					res.render('profile', {
 					    user: req.user ? req.user.username : '',
 						title: 'Profile Form',
@@ -392,8 +386,6 @@ exports.renderProfile = function(req, res) {
 };
 
 exports.saveProfile = function(req,res,next) {
-	//console.log(req.body);
-	//console.log(req.user);
 	req.body['donorProfile.receiveemail'] = (req.body['donorProfile.receiveemail']==='on') ? true:false;
 	req.body['donorProfile.receivesms'] = (req.body['donorProfile.receivesms']==='on') ? true:false;
 	req.body['donorProfile.shareemail'] = (req.body['donorProfile.shareemail']==='on') ? true:false;
@@ -415,7 +407,6 @@ exports.saveProfile = function(req,res,next) {
 };
 
 exports.uploadProfilePic = function(req,res,next){
-	console.log(req.files);
 	var user_id=req.user.id;
 	fs.readFile(req.files.profilepic.path, function (err, data){
 		if(err){
@@ -454,7 +445,7 @@ exports.uploadProfilePic = function(req,res,next){
 	//Remove all the temp files.
 	fs.unlink(req.files.profilepic.path,function(err){
 		if(err){
-			console.log('Error whule deleting temp file');
+			logger.error('Error while deleting temp file',err);
 		}
 	});//unlink End.
 	return res.redirect('/profile');

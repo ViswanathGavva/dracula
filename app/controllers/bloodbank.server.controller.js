@@ -4,7 +4,6 @@ var mongoose = require('mongoose'),
 	ds = require('../../app/services/dataservices.server.service');
 
 var getBloodbanks = function(req,res,next){
-console.log('Viswa Viswa method inside');
 	var state=req.body.state,
 		city=req.body.city,
 		area=req.body.area;
@@ -12,7 +11,6 @@ console.log('Viswa Viswa method inside');
 //		.and([{'area':area},{'city':city},{'state':state}])
 		.exec(function(err,bbs){
 		if(err){
-		console.log('Viswa Viswa method error');
 			//log the error and redirect to error controller
 			logger.error('Error in get blood bank data',err);
 			return next(err);
@@ -46,8 +44,6 @@ ds.getStates(req,res,function(err){
 			logger.error('Error in get Bloodbank data',err);
 			res.redirect('/error');
 			}
-			console.log('Viswa Viswa');
-			console.log(req.body);
 			var formdata= req.session.formdata ? req.session.formdata:'';
 			var focusele = req.session.focusele ? req.session.focusele:'state';		
 			delete req.session.formdata;

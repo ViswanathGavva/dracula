@@ -222,3 +222,7 @@ height:44px;
   height: 60px;*/
  
 }
+
+.modal-dialog {
+	background-color: #fff;
+}

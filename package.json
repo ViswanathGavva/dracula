@@ -34,7 +34,8 @@
     "passport-twitter": "^1.0.2",
     "connect-multiparty": "^2.0.0",
     "winston":"^2.2.0",
-    "morgan": "^1.1.1"
+    "morgan": "^1.1.1",
+    "nodemailer": "2.x"
   },
   "devDependencies": {
     "express-validator": "^2.19.1",
