@@ -1,6 +1,9 @@
 {
   "name": "dracula",
   "version": "1.0.0",
+  "engines": {
+    "node": "4.3.0"
+  },
   "description": "blood donors network",
   "main": "server.js",
   "scripts": {
