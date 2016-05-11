@@ -61,17 +61,7 @@
 
 	<div class="container">		
 		<div class="col-md-6">
-		<% if(messages.length>0){ %>
-	    <div class="alert alert-info alert-dismissable">
-	    <% for(var i in messages) { %>
-            <i class="fa fa-coffee"></i>
-			  <div class="flash">
-				<%= messages[i] %>
-			  </div>
-
-				<% } %>
-			</div>
-	    <% } %>
+		
 	    <% if(errors.length>0){ %>
 	    <div class="alert alert-info alert-dismissable">
 	    <% for(var i in errors) { %>
@@ -148,7 +138,7 @@
           		<div class="form-group">
             		<label class="col-lg-4 control-label">Hospital:</label>
             		<div class="col-lg-8">
-              			<input class="form-control" type="text" value="<%= formdata.phospital %>" name="hospital" placeholder="Hospital">
+              			<input class="form-control" type="text" value="<%= formdata.phospital %>" name="phospital" placeholder="Hospital">
             		</div>
           		</div>  
           		        
@@ -191,8 +181,7 @@
           		<div class="form-group">
             		<label class="col-lg-4 control-label">Description:</label>
             		<div class="col-lg-8">
-              			<textarea class="form-control" name="reqdesc" placeholder="Please enter contact info and other info"><%= formdata.reqdesc %>
-              			</textarea>
+              			<textarea class="form-control" name="reqdesc" placeholder="Please enter contact info and other info"><%= formdata.reqdesc %></textarea>
             		</div>
           		</div>
           		         
@@ -208,22 +197,17 @@
       	</div>
 		
        <div class="col-md-6 search-map">
-        <!--<div class="alert alert-info alert-dismissable">
-          <a class="panel-close close" data-dismiss="alert">×</a> 
-          <i class="fa fa-coffee"></i>
-		<% for(var i in messages) { %>
-			<div class="flash">
+        <% if(messages.length>0){ %>
+	    <div class="alert alert-info alert-dismissable">
+	    <% for(var i in messages) { %>
+            <i class="fa fa-coffee"></i>
+			  <div class="flash">
 				<%= messages[i] %>
-			</div>
-		<% } %>
+			  </div>
 
-        </div>-->
-        <div class="search-map">
-        	<div class="search-map" id="map" height="200px">
-        	
-        	</div>
-        
-        </div>
+				<% } %>
+			</div>
+	    <% } %>
         
        </div> 
 

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/signin.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/searchresults.js"></script>
+    <script type="text/javascript" charset="utf-8">
+    	function loadMap(){
+			
+			var openreqs = [];
+			
+			results = <%- JSON.stringify(bloodreqs) %>;			
+			
+			for(var k=0;k<results.length;k++){
+			 openreqs.push({"name":results[k].pname,			 		   
+			 		   "pin":results[k].ppin,
+			 		   "area":results[k].parea,
+			 		   "city":results[k].pcity,
+			 		   "state":results[k].pstate});			 
+			}
+			
+			
+			
+			var config = {
+			results: openreqs,
+			mapEle :'map',
+			city:"",
+			state:"",
+			area:"",
+			pin:"",
+			zoomlevel:5
+			};
+			searchresults.init(config);		
+			searchresults.loadMap();
+
+		}
+    </script>
+</head>
+
+<body class="bg-backgroundmain">
+<div class="container">
+
+<div class="row">
+<% include partials/navbar %>
+</div>
+
+<div class="row">
+	<% for(var i in messages) { %>
+		<div class="flash">
+			<%= messages[i] %>
+		</div>
+	<% } %>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+        		<div class="text-center">
+        		    <h3>open Requests</h3>
+        		    <table class="table">
+    					<thead>
+      					<tr>
+        					<th>Name</th>
+        					<th>Description</th>
+        					<th>Address & Hospital</th>        					
+      					</tr>
+    					</thead>
+    					<tbody>
+          		    <% for(var i in bloodreqs) { %>	
+          		    	<tr>
+        					<td><%= bloodreqs[i].pname %></td>
+        					<td><%= bloodreqs[i].reqdesc %></td>
+        					<td><%= bloodreqs[i].phospital +','+ bloodreqs[i].pcity +','+ bloodreqs[i].ppin  %></td>        					
+    					</tr>                      		              
+		                <% } %>
+        		</table>
+        		
+        			
+					
+					<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-lg">
+
+						
+						<div class="modal-body">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+								<h3 id="myModalLabel">Send Request to Donor(s)</h3>
+								
+							<form class="form-horizontal" action="/sendRequest" method="post">
+					          <input type="hidden" value="" id="donors">
+					          <div class="form-group">
+            					<label class="col-lg-4 control-label">Description:</label>
+            					<div class="col-lg-8">
+              						<textarea class="form-control" name="reqdesc" placeholder="Please enter contact info and other info">
+              						</textarea>
+            					</div>
+          					  </div>
+					    		<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+					    		<button class="btn btn-primary">Request</button>
+
+							</form>
+						</div>
+					</div>
+					</div>
+        		
+        		</div>
+        		
+        		
+
+
+	        </div>
+	        <div class="col-md-6 search-map">     	        	
+        		<div class="search-map">
+        			<div class="search-map" id="map" height="200px">
+        			</div>
+        		</div>        
+	        </div>
+	        
+		</div><!--row-->
+	</div><!--container-->
+</div><!--row-->
+
+<div class="row">
+<% include partials/footer %>
+</div>
+
+</div><!--container-->
+<script async defer src="https://maps.googleapis.com/maps/api/js?callback=loadMap"></script>
+</body>
+</html>

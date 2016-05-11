@@ -159,6 +159,7 @@ exports.saveBloodRequest = function(req,res){
 	req.checkBody('bloodgroup','BloodGroup is mandatory').notEmpty();	
 	req.checkBody('pstate','State').notEmpty();
 	req.checkBody('pcity','City is required').notEmpty();
+	req.checkBody('reqdesc','Please enter some description of your request. e.g contact info.').notEmpty();
 	
 	var errors = req.validationErrors();
 	if(errors){				
@@ -177,7 +178,7 @@ exports.saveBloodRequest = function(req,res){
 			}
 			else{
 				req.session.formdata=req.body;
-				req.flash('info','Request saved successfully');
+				req.flash('info','Request saved successfully. We have sent notifications to all matched donors. We hope some out will reach out to you. All the best.');
 				res.redirect('/bloodrequest');
 			}
 		});
@@ -251,3 +252,22 @@ transporter.sendMail(message, function (error, info) {
 req.flash('error','Email sent to the Donor');
 res.redirect('/');
 };
+
+exports.getRequests = function(req,res,next){
+	BloodRequest.find({}, function(err, reqs) {
+		if (err) {
+			return next(err);
+		}
+		else {
+		     res.render('openreqs',{
+							user: req.user ? req.user.username : '',
+							title: 'Open Requests',
+							validateErrorMessages: req.flash('validationError'),
+							bloodreqs:reqs,
+							messages: req.flash('info')	,
+							errors: req.flash('error')
+							});
+			 
+		}
+	});
+}

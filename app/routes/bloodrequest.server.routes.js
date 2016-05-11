@@ -9,4 +9,7 @@ module.exports = function(app) {
 	app.route('/sendRequest')
 	.post(bloodrequest.sendRequest)
 	.get(bloodrequest.sendRequest);
+	
+	app.route('/bloodrequests')
+	.get(bloodrequest.getRequests);
 };	

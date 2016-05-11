@@ -2,6 +2,7 @@ searchresults = function(){
 //local variables.
 var city;
 var country='India';
+var zoomlevel = 12;
 var mapEle;
 var searchResults;
 
@@ -13,6 +14,7 @@ init = function(config){
 	mapEle = config.mapEle;
 	city=config.city;
 	state=config.state;
+	zoomlevel = config.zoomlevel || zoomlevel;
 
 }
 
@@ -36,7 +38,7 @@ var loadMap = function(){
   
   //load the map for the search city and state.
    map = new google.maps.Map(document.getElementById(mapEle), {
-    zoom: 12,
+    zoom: zoomlevel,
     center: results[0].geometry.location,
     mapTypeId: google.maps.MapTypeId.TERRAIN
   });

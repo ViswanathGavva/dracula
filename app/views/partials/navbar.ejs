@@ -5,6 +5,9 @@
         <li><a href="/">Home</a></li>
         <li><a href="/bloodbank">Blood Banks</a></li>        
         <li><a href="/bloodrequest">Submit a Blood request</a></li>
+        <% if ( user ) { %>
+        <li><a href="/bloodrequests">Open blood requests</a></li>
+        <% } %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
                       <% if ( user ) { %>
