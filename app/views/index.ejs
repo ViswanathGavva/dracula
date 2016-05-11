@@ -5,6 +5,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/signin.css" rel="stylesheet">
     <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript">		
 $(document).ready(function() {
 		//autofocus on first error field.
@@ -33,6 +34,8 @@ $(document).ready(function() {
 		    });
 		});
 		
+		
+		
 			
 });
 		</script>
@@ -54,13 +57,57 @@ $(document).ready(function() {
 	
 	<div class="container">
 		<div class="row">
-			<div class="col-md-3">
+			<div class="col-md-6">
         		<div class="text-center">
         		    <h3>Search for a donor</h3>
           		    <% include partials/searchdonors %>
         		</div>
 	        </div>
-	        <div class="col-md-9 personal-info">            
+	        <div class="col-md-6">  
+	        	<div class="text-center">
+	        	
+	        	<% if(events.length>0){ %>
+	        	<div id="myCarousel" class="carousel slide col-md-9" data-ride="carousel">
+  					
+	
+  					<!-- Wrapper for slides -->
+  					<div class="carousel-inner" role="listbox">
+  					  <div class="item active">
+  					    <span><%= events[0].desc %></span>
+  					    Contact at:
+  					    <span><%= events[0].address %></span>
+  					    <span><%= events[0].city %></span>
+  					    <span><%= events[0].email %></span>
+  					    <span><%= events[0].phone %></span>
+  					  </div>
+					<% for(var i =1; i< events.length; i++) { %>	
+  					  <div class="item">
+  					    <span><%= events[i].desc %></span><br>
+  					    Contact at:
+  					    <span><%= events[i].address %></span>
+  					    <span><%= events[i].city %></span>
+  					    <span><%= events[i].email %></span>
+  					    <span><%= events[i].phone %></span>
+  					  </div>
+  					  <% } %> 
+  					
+  					  
+  					</div>
+	
+  	  				<!-- Left and right controls -->
+  	  				<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+  	  				  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+  	  				  <span class="sr-only">Previous</span>
+  	  				</a>
+  	  				<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+  	  				  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+  	  				  <span class="sr-only">Next</span>
+  	  				</a>
+  	  			</div>
+  	  			<% } %>
+  
+  
+	        	</div>
 	        </div>
 	        
 		</div>

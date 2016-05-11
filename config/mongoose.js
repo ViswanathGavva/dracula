@@ -10,6 +10,7 @@ module.exports = function() {
 	require('../app/models/bloodbank.server.model');
 	require('../app/models/city.server.model');
 	require('../app/models/state.server.model');
+	require('../app/models/event.server.model');
 
 	return db;
 };

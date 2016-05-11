@@ -1,5 +1,4 @@
 var mongoose = require('mongoose'),
-	crypto = require('crypto'),
 	Schema = mongoose.Schema;
 var CitySchema = new Schema({
 	name : String,

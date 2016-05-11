@@ -25,24 +25,33 @@ exports.renderIndex = function(req, res) {
 							res.redirect('/');
 							res.end();
 						}
-						else{													
-							//logger.info("This is inside index controller",req.states);
-							var formdata= req.session.formdata ? req.session.formdata:'';
-							var focusele = req.session.focusele ? req.session.focusele:'p_bg';		
-							delete req.session.formdata;
-							delete req.session.focusele;
-								
-							res.render('index', {
-						    title: 'DRACULA',
-						    user: req.user ? req.user.username : '',
-						    formdata: formdata,
-							focusele: focusele,
-							bgs: req.Bgs,
-							states: req.states,
-							cities:req.cities,
-							messages: req.flash('error') || req.flash('info')
-						    });
+						else{	
+							ds.getEvents(function(err,events){
+								if(err){
+									logger.error(err);
+									res.redirect('/');
+									res.end();
+								}
+								var formdata= req.session.formdata ? req.session.formdata:'';
+								var focusele = req.session.focusele ? req.session.focusele:'p_bg';		
+								delete req.session.formdata;
+								delete req.session.focusele;
+									
+								res.render('index', {
+						    	title: 'DRACULA',
+						    	user: req.user ? req.user.username : '',
+						    	formdata: formdata,
+								focusele: focusele,
+								bgs: req.Bgs,
+								states: req.states,
+								cities:req.cities,
+								events:events,
+								messages: req.flash('error') || req.flash('info')
+						    	});
 
+							});//End getEvents.											
+							
+							
 						}
 					});//End getCities.
 				}

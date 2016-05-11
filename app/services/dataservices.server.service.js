@@ -1,6 +1,7 @@
 var Bg = require('mongoose').model('Bg'),
 	State = require('mongoose').model('State'),
-	City = require('mongoose').model('City'); 
+	City = require('mongoose').model('City'),
+	Event = require('mongoose').model('Event'); 
 
 exports.getBgs = function(req,res,next){
 Bg.find({},function(err,bgs){
@@ -37,3 +38,14 @@ exports.getCities = function(req,res,next){
 			
 	});
 };
+
+exports.getEvents = function(next){
+	Event.find({},function(err,events){
+		if(err){
+			return next(err);
+		}else{
+			return next(null,events);
+		}
+		
+	});
+}

@@ -10,6 +10,53 @@
     <link href="css/signin.css" rel="stylesheet">
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript">		
+$(document).ready(function() {
+		function getCities(stateele,cityele){
+		 var state = stateele.val();
+		 var $city = cityele;
+		 $.ajax({
+		        url: '/getCities/'+state,
+		        //data: state,
+		        type: "GET",
+		        error: function (err) {
+                	alert("An error ocurred."+err);
+            	},
+		        success: function(citydata) {
+		        $city.find('option').remove();
+		        $.each(citydata,function(i,city){
+			        $city.append($("<option></option>")
+	                    .attr("value",city.name)
+	                    .text(city.name)); 
+		            //alert(citydata);
+		            });
+		        }
+		    });		   
+		 
+		}
+		
+		//state selector.
+		$("#cur_state").on("change", function(){
+		 var stateele = $('#cur_state');
+		 var cityele = $('#cur_city');
+		 getCities(stateele,cityele);		 
+		}); 
+		
+		$("#office_state").on("change", function(){
+		 var stateele = $('#office_state');
+		 var cityele = $('#office_city');
+		 getCities(stateele,cityele);		 
+		});
+		
+		$("#home_state").on("change", function(){
+		 var stateele = $('#home_state');
+		 var cityele = $('#home_city');
+		 getCities(stateele,cityele);		 
+		});
+		
+			
+});
+		</script>
 </head>
 <body class="bg-backgroundmain">
 
@@ -123,7 +170,7 @@
 		          <div class="form-group">
 		            <label class="col-md-2 control-label"> State: </label>
 		            <div class="col-md-6">		              
-		              <select id="curlocation.state" class="form-control reg-select" name="curlocation.state" selected="selected">
+		              <select id="cur_state" class="form-control reg-select" name="curlocation.state" selected="selected">
 		                <option value="" <%= userdata.curlocation.state ? "" : "selected" %>>Select State</option>
 		                <% for(var i in states) { %>	                  
 		                <option value="<%= states[i].name %>" <%= (userdata.curlocation.state=== states[i].name) ? "selected" : "" %>  ><%= states[i].name %></option>	                  
@@ -134,7 +181,7 @@
 		          <div class="form-group">
 		            <label class="col-md-2 control-label"> City: </label>
 		            <div class="col-md-6">		              
-		              <select id="curlocation.city" class="form-control reg-select" name="curlocation.city" selected="selected">
+		              <select id="cur_city" class="form-control reg-select" name="curlocation.city" selected="selected">
 		                <option value="" <%= userdata.curlocation.city ? "" : "selected" %>>Select City</option>
 		                <% for(var i in cities) { %>	                  
 		                <option value="<%= cities[i].name %>" <%= (userdata.curlocation.city=== cities[i].name) ? "selected" : "" %>  ><%= cities[i].name %></option>	                  
@@ -160,7 +207,7 @@
 		          <div class="form-group">
 		            <label class="col-md-2 control-label"> State: </label>
 		            <div class="col-md-6">
-		              <select id="officelocation.state" class="form-control reg-select" name="officelocation.state" selected="selected">
+		              <select id="office_state" class="form-control reg-select" name="officelocation.state" selected="selected">
 		                <option value="" <%= userdata.officelocation.state ? "" : "selected" %>>Select State</option>
 		                <% for(var i in states) { %>	                  
 		                <option value="<%= states[i].name %>" <%= (userdata.officelocation.state=== states[i].name) ? "selected" : "" %>  ><%= states[i].name %></option>	                  
@@ -171,7 +218,7 @@
 		          <div class="form-group">
 		            <label class="col-md-2 control-label"> City: </label>
 		            <div class="col-md-6">
-		              <select id="officelocation.city" class="form-control reg-select" name="officelocation.city" selected="selected">
+		              <select id="office_city" class="form-control reg-select" name="officelocation.city" selected="selected">
 		                <option value="" <%= userdata.officelocation.city ? "" : "selected" %>>Select City</option>
 		                <% for(var i in cities) { %>	                  
 		                <option value="<%= cities[i].name %>" <%= (userdata.officelocation.city=== cities[i].name) ? "selected" : "" %>  ><%= cities[i].name %></option>	                  
@@ -197,7 +244,7 @@
 		          <div class="form-group">
 		            <label class="col-md-2 control-label"> State: </label>
 		            <div class="col-md-6">
-		              <select id="hometown.state" class="form-control reg-select" name="hometown.state" selected="selected">
+		              <select id="home_state" class="form-control reg-select" name="hometown.state" selected="selected">
 		                <option value="" <%= userdata.hometown.state ? "" : "selected" %>>Select State</option>
 		                <% for(var i in states) { %>	                  
 		                <option value="<%= states[i].name %>" <%= (userdata.hometown.state=== states[i].name) ? "selected" : "" %>  ><%= states[i].name %></option>	                  
@@ -208,7 +255,7 @@
 		          <div class="form-group">
 		            <label class="col-md-2 control-label"> City: </label>
 		            <div class="col-md-6">
-		              <select id="hometown.city" class="form-control reg-select" name="hometown.city" selected="selected">
+		              <select id="home_city" class="form-control reg-select" name="hometown.city" selected="selected">
 		                <option value="" <%= userdata.hometown.city ? "" : "selected" %>>Select City</option>
 		                <% for(var i in cities) { %>	                  
 		                <option value="<%= cities[i].name %>" <%= (userdata.hometown.city=== cities[i].name) ? "selected" : "" %>  ><%= cities[i].name %></option>	                  

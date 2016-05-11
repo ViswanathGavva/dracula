@@ -20,7 +20,7 @@ var UserSchema = new Schema({
 	},
 	profilepic:{
 		type: String,
-		default:'img/def_profile.png'
+		default:'def_profile.png'
 	},
 	username: {
 		type: String,

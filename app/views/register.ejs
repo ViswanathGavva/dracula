@@ -109,7 +109,7 @@ $(document).ready(function() {
 	        <!--<input type="text" id="state" name="curlocation.state" class="form-control" placeholder="State" value="<%= formdata['curlocation.state'] %>">-->
 	        <div class="form-group">
 	              <div class="ui-select">
-	                <select id="state" class="form-control reg-select" name="state" selected="selected">
+	                <select id="state" class="form-control reg-select" name="curlocation.state" selected="selected">
 	                <option value="" <%= formdata.state ? "" : "selected" %>>Select State</option>
 	                <% for(var i in states) { %>	                  
 	                  <option value="<%= states[i].name %>" <%= (formdata.state=== states[i].name) ? "selected" : "" %>  ><%= states[i].name %></option>	                  
@@ -124,7 +124,7 @@ $(document).ready(function() {
 	        <!--<input type="text" id="city" name="curlocation.city" class="form-control" placeholder="City" value="<%= formdata['curlocation.city'] %>">-->
 	        <div class="form-group">
 	              <div class="ui-select">
-	                <select id="city" class="form-control reg-select" name="city" selected="selected">
+	                <select id="city" class="form-control reg-select" name="curlocation.city" selected="selected">
 	                <option value="" <%= formdata.city ? "" : "selected" %>>Select City</option>
 	                <% for(var i in cities) { %>	                  
 	                  <option value="<%= cities[i].name %>" <%= (formdata.city=== cities[i].name) ? "selected" : "" %>  ><%= cities[i].name %></option>	                  
