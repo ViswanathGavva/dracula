@@ -73,21 +73,21 @@ $(document).ready(function() {
   					<!-- Wrapper for slides -->
   					<div class="carousel-inner" role="listbox">
   					  <div class="item active">
-  					    <span><%= events[0].desc %></span>
+  					    <span><%= events[0].desc %></span><br>
   					    Contact at:
-  					    <span><%= events[0].address %></span>
-  					    <span><%= events[0].city %></span>
-  					    <span><%= events[0].email %></span>
-  					    <span><%= events[0].phone %></span>
+  					    <span><%= events[0].address %></span><br>
+  					    <span><%= events[0].city %></span><br>
+  					    <span><%= events[0].email %></span><br>
+  					    <span><%= events[0].phone %></span><br>
   					  </div>
 					<% for(var i =1; i< events.length; i++) { %>	
   					  <div class="item">
   					    <span><%= events[i].desc %></span><br>
   					    Contact at:
-  					    <span><%= events[i].address %></span>
-  					    <span><%= events[i].city %></span>
-  					    <span><%= events[i].email %></span>
-  					    <span><%= events[i].phone %></span>
+  					    <span><%= events[i].address %></span><br>
+  					    <span><%= events[i].city %></span><br>
+  					    <span><%= events[i].email %></span><br>
+  					    <span><%= events[i].phone %></span><br>
   					  </div>
   					  <% } %> 
   					
