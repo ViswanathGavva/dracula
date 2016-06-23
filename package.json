@@ -36,12 +36,16 @@
     "passport-local": "^1.0.0",
     "passport-twitter": "^1.0.2",
     "connect-multiparty": "^2.0.0",
-    "winston":"^2.2.0",
+    "winston": "^2.2.0",
     "morgan": "^1.1.1",
     "nodemailer": "2.x"
   },
   "devDependencies": {
+    "connect-multiparty": "^2.0.0",
     "express-validator": "^2.19.1",
-    "connect-multiparty": "^2.0.0"
+    "karma-firefox-launcher": "^1.0.0",
+    "karma-requirejs": "^1.0.0",
+    "karma-safari-launcher": "^1.0.0",
+    "requirejs": "^2.2.0"
   }
 }

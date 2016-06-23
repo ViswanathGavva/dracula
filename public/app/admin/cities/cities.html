@@ -1,0 +1,61 @@
+<!-- This HTML contains the landing page of cities admin page -->
+<div class="row" ng-controller="citycontroller as ctrl">
+			<div class="col-md-6">
+        		<div class="text-center">        		    
+				<h4 class="text-center">Create/Edit City</h2>
+				<form class="form-horizontal" ng-submit="ctrl.saveCity()">					 
+          			
+          			<div class="form-group">
+            			<label class="col-lg-4 control-label">State:</label>
+            			<div class="col-lg-8">
+              			<select id="state" class="form-control" name="state" ng-model="ctrl.cdata.state"               				
+              				ng-options="state.name for state in ctrl.states track by state._id">
+	                	</select>
+	                	</div>
+              		</div>
+          			
+          			
+          			<div class="form-group">
+            			<label class="col-lg-4 control-label">City Name:</label>
+            			<div class="col-lg-8">
+              				<input class="form-control" type="text" ng-model="ctrl.cdata.name" name="cityname" placeholder="City">
+              				<input class="form-control" type="hidden" ng-model="ctrl.cdata._id" name="cityid" placeholder="City">
+            			</div>
+          			</div>					
+					<div class="form-group">
+		            	<div class="col-md-12">
+    	          			<input type="submit" class="btn btn-primary" value="{{ctrl.action}}">
+        	      			<span></span>
+            	  			<input type="reset" class="btn btn-default" value="Reset" ng-click="ctrl.resetForm()">
+            			</div>	
+            		</div> 
+				</form>
+        		</div>
+	        </div>
+	        <div class="col-md-6">  
+	        	<div class="text-center">
+	        	
+	        	<table class="table">
+    					<thead>
+      					<tr>      						
+        					<th>City: <input  type="text" ng-model="CitySearchStr" placeholder="Search by City">
+          					</th>
+          					<th>State: <input  type="text" ng-model="StateSearchStr" placeholder="search by State">
+          					</th>
+          					<th>Action
+          					</th>          					
+          					</form>
+      					</tr>
+    					</thead>
+    					<tbody>
+    						<tr ng-repeat="city in ctrl.cities">
+        						<td>{{city.name}}</td>
+        						<td>{{(ctrl.states | filter : {_id: city.state})[0].name }} </td>
+        						<td><a ng-click="ctrl.editCity(city._id)" id="Edit{{ city._id }}" class="glyphicon glyphicon-edit"></a>  <a ng-click="ctrl.deleteCity(city._id)" class="glyphicon glyphicon-trash"></a></td>
+    					    </tr> 
+    					</tbody>
+    			</table>		
+    			<uib-pagination total-items="totalItems" ng-model="currentPage" items-per-page="itemsPerPage"></uib-pagination>
+	        	</div>
+	        </div>
+</div>	        

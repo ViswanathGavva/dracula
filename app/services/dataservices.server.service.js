@@ -1,7 +1,8 @@
 var Bg = require('mongoose').model('Bg'),
 	State = require('mongoose').model('State'),
 	City = require('mongoose').model('City'),
-	Event = require('mongoose').model('Event'); 
+	Event = require('mongoose').model('Event'),
+	BloodBank = require('mongoose').model('BloodBank'); 
 
 exports.getBgs = function(req,res,next){
 Bg.find({},function(err,bgs){
@@ -48,4 +49,18 @@ exports.getEvents = function(next){
 		}
 		
 	});
-}
+};
+
+exports.getBloodbanks = function(next){	
+		BloodBank.find({},function(err,bbs){
+		if(err){
+			//log the error and redirect to error controller
+			logger.error('Error in get blood bank data',err);
+			return next(err);
+		}
+		else
+		{
+			return next(null,bbs);
+		}
+		});
+};

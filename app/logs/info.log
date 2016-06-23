@@ -7,3 +7,225 @@
 {"level":"info","message":"inside express config undefined","timestamp":"2016-05-11T10:59:12.139Z"}
 {"level":"info","message":"inside express config undefined","timestamp":"2016-05-11T11:12:00.083Z"}
 {"level":"info","message":"inside express config undefined","timestamp":"2016-05-11T11:15:43.217Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-05-13T07:32:20.985Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-05-13T07:32:42.390Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-05-16T04:06:00.677Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-01T06:33:07.002Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-01T06:33:38.359Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-01T06:46:57.554Z"}
+{"date":"Wed Jun 01 2016 12:16:57 GMT+0530 (IST)","process":{"pid":69584,"uid":1398152940,"gid":1067713822,"cwd":"/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula","execPath":"/usr/local/bin/node","version":"v4.3.0","argv":["/usr/local/bin/node","/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/server.js"],"memoryUsage":{"rss":62906368,"heapTotal":57937504,"heapUsed":26207104}},"os":{"loadavg":[1.919921875,1.8828125,1.75244140625],"uptime":1370970},"trace":[{"column":8,"file":"/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/app/routes/admin.server.routes.js","function":"module.exports","line":5,"method":"exports","native":false},{"column":49,"file":"/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/config/express.js","function":"module.exports","line":60,"method":"exports","native":false},{"column":8,"file":"/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/server.js","function":"","line":9,"method":null,"native":false},{"column":26,"file":"module.js","function":"Module._compile","line":410,"method":"_compile","native":false},{"column":10,"file":"module.js","function":"Object.Module._extensions..js","line":417,"method":"Module._extensions..js","native":false},{"column":32,"file":"module.js","function":"Module.load","line":344,"method":"load","native":false},{"column":12,"file":"module.js","function":"Function.Module._load","line":301,"method":"Module._load","native":false},{"column":10,"file":"module.js","function":"Function.Module.runMain","line":442,"method":"Module.runMain","native":false},{"column":18,"file":"node.js","function":"startup","line":136,"method":null,"native":false},{"column":3,"file":"node.js","function":null,"line":966,"method":null,"native":false}],"stack":["ReferenceError: users is not defined","    at module.exports (/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/app/routes/admin.server.routes.js:5:8)","    at module.exports (/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/config/express.js:60:49)","    at Object.<anonymous> (/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/server.js:9:8)","    at Module._compile (module.js:410:26)","    at Object.Module._extensions..js (module.js:417:10)","    at Module.load (module.js:344:32)","    at Function.Module._load (module.js:301:12)","    at Function.Module.runMain (module.js:442:10)","    at startup (node.js:136:18)","    at node.js:966:3"],"level":"error","message":"uncaughtException: users is not defined","timestamp":"2016-06-01T06:46:57.624Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-01T06:48:08.120Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-01T06:59:34.900Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-01T07:00:49.461Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-01T07:02:13.229Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-01T07:04:21.407Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-01T07:09:06.229Z"}
+{"date":"Wed Jun 01 2016 12:39:26 GMT+0530 (IST)","process":{"pid":70054,"uid":1398152940,"gid":1067713822,"cwd":"/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula","execPath":"/usr/local/bin/node","version":"v4.3.0","argv":["/usr/local/bin/node","/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/server.js"],"memoryUsage":{"rss":73621504,"heapTotal":61021280,"heapUsed":37533600}},"os":{"loadavg":[1.19873046875,1.66748046875,1.8583984375],"uptime":1372319},"trace":[{"column":4,"file":"/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/app/services/dataservices.server.service.js","function":"","line":64,"method":null,"native":false},{"column":45,"file":"/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/node_modules/mongoose/node_modules/mpromise/lib/promise.js","function":"","line":175,"method":null,"native":false},{"column":13,"file":"events.js","function":"emitOne","line":77,"method":null,"native":false},{"column":7,"file":"events.js","function":"EventEmitter.emit","line":169,"method":"emit","native":false},{"column":21,"file":"/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/node_modules/mongoose/node_modules/mpromise/lib/promise.js","function":"Promise.safeEmit","line":81,"method":"safeEmit","native":false},{"column":24,"file":"/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/node_modules/mongoose/node_modules/mpromise/lib/promise.js","function":"Promise.fulfill","line":94,"method":"fulfill","native":false},{"column":23,"file":"/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/node_modules/mongoose/lib/promise.js","function":"Promise.resolve","line":113,"method":"resolve","native":false},{"column":16,"file":"/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/node_modules/mongoose/node_modules/kareem/index.js","function":null,"line":103,"method":null,"native":false},{"column":9,"file":"node.js","function":"nextTickCallbackWith0Args","line":419,"method":null,"native":false},{"column":13,"file":"node.js","function":"process._tickCallback","line":348,"method":"_tickCallback","native":false}],"stack":["ReferenceError: req is not defined","    at EventEmitter.<anonymous> (/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/app/services/dataservices.server.service.js:64:4)","    at EventEmitter.<anonymous> (/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/node_modules/mongoose/node_modules/mpromise/lib/promise.js:175:45)","    at emitOne (events.js:77:13)","    at EventEmitter.emit (events.js:169:7)","    at Promise.safeEmit (/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/node_modules/mongoose/node_modules/mpromise/lib/promise.js:81:21)","    at Promise.fulfill (/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/node_modules/mongoose/node_modules/mpromise/lib/promise.js:94:24)","    at Promise.resolve (/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/node_modules/mongoose/lib/promise.js:113:23)","    at /Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/node_modules/mongoose/node_modules/kareem/index.js:103:16","    at nextTickCallbackWith0Args (node.js:419:9)","    at process._tickCallback (node.js:348:13)"],"level":"error","message":"uncaughtException: req is not defined","timestamp":"2016-06-01T07:09:26.204Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-01T07:10:45.152Z"}
+{"date":"Wed Jun 01 2016 12:41:24 GMT+0530 (IST)","process":{"pid":70066,"uid":1398152940,"gid":1067713822,"cwd":"/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula","execPath":"/usr/local/bin/node","version":"v4.3.0","argv":["/usr/local/bin/node","/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/server.js"],"memoryUsage":{"rss":74407936,"heapTotal":61021280,"heapUsed":38298696}},"os":{"loadavg":[1.56494140625,1.654296875,1.82666015625],"uptime":1372437},"trace":[{"column":4,"file":"/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/app/services/dataservices.server.service.js","function":"","line":64,"method":null,"native":false},{"column":45,"file":"/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/node_modules/mongoose/node_modules/mpromise/lib/promise.js","function":"","line":175,"method":null,"native":false},{"column":13,"file":"events.js","function":"emitOne","line":77,"method":null,"native":false},{"column":7,"file":"events.js","function":"EventEmitter.emit","line":169,"method":"emit","native":false},{"column":21,"file":"/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/node_modules/mongoose/node_modules/mpromise/lib/promise.js","function":"Promise.safeEmit","line":81,"method":"safeEmit","native":false},{"column":24,"file":"/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/node_modules/mongoose/node_modules/mpromise/lib/promise.js","function":"Promise.fulfill","line":94,"method":"fulfill","native":false},{"column":23,"file":"/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/node_modules/mongoose/lib/promise.js","function":"Promise.resolve","line":113,"method":"resolve","native":false},{"column":16,"file":"/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/node_modules/mongoose/node_modules/kareem/index.js","function":null,"line":103,"method":null,"native":false},{"column":9,"file":"node.js","function":"nextTickCallbackWith0Args","line":419,"method":null,"native":false},{"column":13,"file":"node.js","function":"process._tickCallback","line":348,"method":"_tickCallback","native":false}],"stack":["ReferenceError: req is not defined","    at EventEmitter.<anonymous> (/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/app/services/dataservices.server.service.js:64:4)","    at EventEmitter.<anonymous> (/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/node_modules/mongoose/node_modules/mpromise/lib/promise.js:175:45)","    at emitOne (events.js:77:13)","    at EventEmitter.emit (events.js:169:7)","    at Promise.safeEmit (/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/node_modules/mongoose/node_modules/mpromise/lib/promise.js:81:21)","    at Promise.fulfill (/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/node_modules/mongoose/node_modules/mpromise/lib/promise.js:94:24)","    at Promise.resolve (/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/node_modules/mongoose/lib/promise.js:113:23)","    at /Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/node_modules/mongoose/node_modules/kareem/index.js:103:16","    at nextTickCallbackWith0Args (node.js:419:9)","    at process._tickCallback (node.js:348:13)"],"level":"error","message":"uncaughtException: req is not defined","timestamp":"2016-06-01T07:11:24.396Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-01T07:15:59.964Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-01T08:29:32.641Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-01T08:31:10.203Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-02T10:12:37.107Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-02T10:14:46.462Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-02T10:42:06.775Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-03T04:12:50.302Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-03T10:12:40.251Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-06T04:57:57.757Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-06T05:18:02.697Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-06T05:20:20.946Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-06T05:40:58.153Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-06T05:48:57.061Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-06T05:55:17.803Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-06T05:57:58.347Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-06T06:00:10.586Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T06:00:31.102Z"}
+{"level":"info","message":"5755095e6c7459435531a82e undefined","timestamp":"2016-06-06T06:00:31.102Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T06:00:41.143Z"}
+{"level":"info","message":"5755095e6c7459435531a82e undefined","timestamp":"2016-06-06T06:00:41.144Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T06:00:48.819Z"}
+{"level":"info","message":"5755095e6c7459435531a82e undefined","timestamp":"2016-06-06T06:00:48.819Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T06:01:22.842Z"}
+{"level":"info","message":"57209b670fa99826efb7e7c9 undefined","timestamp":"2016-06-06T06:01:22.842Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T06:03:32.621Z"}
+{"level":"info","message":"5755083e6c7459435531a82a undefined","timestamp":"2016-06-06T06:03:32.622Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-06T06:31:48.006Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T06:32:09.348Z"}
+{"level":"info","message":"5755095e6c7459435531a82e undefined","timestamp":"2016-06-06T06:32:09.348Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T06:34:54.749Z"}
+{"level":"info","message":"57209b680fa99826efb7e7cb undefined","timestamp":"2016-06-06T06:34:54.750Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T06:34:58.411Z"}
+{"level":"info","message":"57209b680fa99826efb7e7cb undefined","timestamp":"2016-06-06T06:34:58.411Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-06T06:37:04.213Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-06T06:38:07.796Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T06:38:26.603Z"}
+{"level":"info","message":"57209b650fa99826efb7e7c7 undefined","timestamp":"2016-06-06T06:38:26.604Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T06:38:31.043Z"}
+{"level":"info","message":"57209b680fa99826efb7e7cb undefined","timestamp":"2016-06-06T06:38:31.043Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T06:38:35.258Z"}
+{"level":"info","message":"575508dc6c7459435531a82c undefined","timestamp":"2016-06-06T06:38:35.258Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-06T06:44:41.308Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T06:45:03.378Z"}
+{"level":"info","message":"57550b6a6c7459435531a82f undefined","timestamp":"2016-06-06T06:45:03.379Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T06:45:05.947Z"}
+{"level":"info","message":"57550b6a6c7459435531a82f undefined","timestamp":"2016-06-06T06:45:05.947Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T06:45:06.697Z"}
+{"level":"info","message":"57550b6a6c7459435531a82f undefined","timestamp":"2016-06-06T06:45:06.697Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T06:45:08.498Z"}
+{"level":"info","message":"57550b6a6c7459435531a82f undefined","timestamp":"2016-06-06T06:45:08.498Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T06:45:09.849Z"}
+{"level":"info","message":"57550b6a6c7459435531a82f undefined","timestamp":"2016-06-06T06:45:09.850Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T06:45:16.201Z"}
+{"level":"info","message":"57550b6a6c7459435531a82f undefined","timestamp":"2016-06-06T06:45:16.201Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T06:45:18.584Z"}
+{"level":"info","message":"57550b6a6c7459435531a82f undefined","timestamp":"2016-06-06T06:45:18.584Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T06:45:25.506Z"}
+{"level":"info","message":"57550b6a6c7459435531a82f undefined","timestamp":"2016-06-06T06:45:25.506Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T06:45:26.576Z"}
+{"level":"info","message":"5755095e6c7459435531a82e undefined","timestamp":"2016-06-06T06:45:26.576Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T06:45:26.936Z"}
+{"level":"info","message":"5755095e6c7459435531a82e undefined","timestamp":"2016-06-06T06:45:26.936Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T06:45:27.203Z"}
+{"level":"info","message":"5755095e6c7459435531a82e undefined","timestamp":"2016-06-06T06:45:27.203Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-06T06:46:12.007Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T06:46:30.199Z"}
+{"level":"info","message":"57550b6a6c7459435531a82f undefined","timestamp":"2016-06-06T06:46:30.199Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T06:46:33.536Z"}
+{"level":"info","message":"57550b6a6c7459435531a82f undefined","timestamp":"2016-06-06T06:46:33.536Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T06:46:34.037Z"}
+{"level":"info","message":"57550b6a6c7459435531a82f undefined","timestamp":"2016-06-06T06:46:34.037Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T06:46:40.109Z"}
+{"level":"info","message":"57550b6a6c7459435531a82f undefined","timestamp":"2016-06-06T06:46:40.109Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T06:46:40.509Z"}
+{"level":"info","message":"57550b6a6c7459435531a82f undefined","timestamp":"2016-06-06T06:46:40.509Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T06:46:40.839Z"}
+{"level":"info","message":"57550b6a6c7459435531a82f undefined","timestamp":"2016-06-06T06:46:40.839Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T09:01:05.565Z"}
+{"level":"info","message":"5755095e6c7459435531a82e undefined","timestamp":"2016-06-06T09:01:05.565Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T09:01:18.479Z"}
+{"level":"info","message":"57209b670fa99826efb7e7ca undefined","timestamp":"2016-06-06T09:01:18.479Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T09:01:21.908Z"}
+{"level":"info","message":"575508e86c7459435531a82d undefined","timestamp":"2016-06-06T09:01:21.908Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-06T09:16:17.311Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T09:16:38.887Z"}
+{"level":"info","message":"57550b6a6c7459435531a82f undefined","timestamp":"2016-06-06T09:16:38.887Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T09:20:53.604Z"}
+{"level":"info","message":"5755095e6c7459435531a82e undefined","timestamp":"2016-06-06T09:20:53.604Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T09:21:49.273Z"}
+{"level":"info","message":"57550b6a6c7459435531a82f undefined","timestamp":"2016-06-06T09:21:49.273Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T09:22:56.371Z"}
+{"level":"info","message":"57550b6a6c7459435531a82f undefined","timestamp":"2016-06-06T09:22:56.371Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-06T09:24:57.478Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T09:25:18.737Z"}
+{"level":"info","message":"57550b6a6c7459435531a82f undefined","timestamp":"2016-06-06T09:25:18.737Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T09:25:25.433Z"}
+{"level":"info","message":"57550b6a6c7459435531a82f undefined","timestamp":"2016-06-06T09:25:25.433Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T09:26:04.575Z"}
+{"level":"info","message":"57550b6a6c7459435531a82f undefined","timestamp":"2016-06-06T09:26:04.575Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-06T09:28:56.252Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T09:28:59.975Z"}
+{"level":"info","message":"575508e86c7459435531a82d undefined","timestamp":"2016-06-06T09:28:59.975Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T09:29:10.733Z"}
+{"level":"info","message":"57550b6a6c7459435531a82f undefined","timestamp":"2016-06-06T09:29:10.733Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T09:29:20.675Z"}
+{"level":"info","message":"57209b670fa99826efb7e7ca undefined","timestamp":"2016-06-06T09:29:20.675Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T09:30:22.435Z"}
+{"level":"info","message":"5755095e6c7459435531a82e undefined","timestamp":"2016-06-06T09:30:22.435Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T09:34:06.673Z"}
+{"level":"info","message":"57550b6a6c7459435531a82f undefined","timestamp":"2016-06-06T09:34:06.673Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-06T09:38:16.296Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T09:38:29.863Z"}
+{"level":"info","message":"undefined undefined","timestamp":"2016-06-06T09:38:29.863Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T09:38:32.180Z"}
+{"level":"info","message":"undefined undefined","timestamp":"2016-06-06T09:38:32.181Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T09:38:37.926Z"}
+{"level":"info","message":"undefined undefined","timestamp":"2016-06-06T09:38:37.927Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-06T09:40:22.309Z"}
+{"level":"info","message":"inside findbyid undefined","timestamp":"2016-06-06T09:40:36.826Z"}
+{"level":"info","message":"inside remove undefined","timestamp":"2016-06-06T09:40:36.829Z"}
+{"level":"info","message":"inside findbyid undefined","timestamp":"2016-06-06T09:40:43.128Z"}
+{"level":"info","message":"inside remove undefined","timestamp":"2016-06-06T09:40:43.129Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-06T09:45:17.712Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T09:46:57.608Z"}
+{"level":"info","message":"undefined undefined","timestamp":"2016-06-06T09:46:57.608Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T09:47:46.150Z"}
+{"level":"info","message":"undefined undefined","timestamp":"2016-06-06T09:47:46.150Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T09:49:59.376Z"}
+{"level":"info","message":"undefined undefined","timestamp":"2016-06-06T09:49:59.376Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T09:52:01.067Z"}
+{"level":"info","message":"undefined undefined","timestamp":"2016-06-06T09:52:01.067Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T09:52:45.394Z"}
+{"level":"info","message":"undefined undefined","timestamp":"2016-06-06T09:52:45.394Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T09:54:23.117Z"}
+{"level":"info","message":"undefined undefined","timestamp":"2016-06-06T09:54:23.117Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T09:57:55.252Z"}
+{"level":"info","message":"undefined undefined","timestamp":"2016-06-06T09:57:55.253Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T09:59:55.352Z"}
+{"level":"info","message":"undefined undefined","timestamp":"2016-06-06T09:59:55.352Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T10:00:13.670Z"}
+{"level":"info","message":"undefined undefined","timestamp":"2016-06-06T10:00:13.670Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-06T10:00:29.342Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T10:00:47.334Z"}
+{"level":"info","message":"undefined undefined","timestamp":"2016-06-06T10:00:47.335Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-06T10:01:20.237Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T10:01:31.923Z"}
+{"level":"info","message":"undefined undefined","timestamp":"2016-06-06T10:01:31.924Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T10:01:46.330Z"}
+{"level":"info","message":"undefined undefined","timestamp":"2016-06-06T10:01:46.330Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T10:01:51.818Z"}
+{"level":"info","message":"undefined undefined","timestamp":"2016-06-06T10:01:51.818Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T10:02:06.609Z"}
+{"level":"info","message":"undefined undefined","timestamp":"2016-06-06T10:02:06.609Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T10:51:43.752Z"}
+{"level":"info","message":"undefined undefined","timestamp":"2016-06-06T10:51:43.752Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T10:51:45.015Z"}
+{"level":"info","message":"undefined undefined","timestamp":"2016-06-06T10:51:45.015Z"}
+{"level":"info","message":"{} undefined","timestamp":"2016-06-06T10:51:56.486Z"}
+{"level":"info","message":"undefined undefined","timestamp":"2016-06-06T10:51:56.486Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-06T11:12:01.305Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-06T12:01:32.393Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-07T05:21:57.939Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-08T09:56:34.623Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-08T09:58:34.958Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-08T09:59:38.460Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-08T10:00:30.248Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-09T04:49:40.560Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-10T04:42:10.750Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-10T04:43:59.793Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-13T04:15:59.225Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-14T05:49:07.183Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-14T10:34:36.899Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-14T10:52:59.350Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-15T04:44:00.690Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-16T04:37:10.682Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-16T05:35:18.811Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-16T05:38:07.864Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-16T05:47:08.962Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-16T05:48:35.615Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-16T05:49:44.351Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-16T05:54:42.738Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-16T09:25:48.544Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-16T09:26:47.452Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-16T09:27:39.629Z"}
+{"date":"Thu Jun 16 2016 14:57:46 GMT+0530 (IST)","process":{"pid":20193,"uid":1398152940,"gid":1067713822,"cwd":"/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula","execPath":"/usr/local/bin/node","version":"v4.3.0","argv":["/usr/local/bin/node","/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/server.js"],"memoryUsage":{"rss":65617920,"heapTotal":59989344,"heapUsed":31846744}},"os":{"loadavg":[2.21484375,2.12451171875,1.9970703125],"uptime":281031},"trace":[{"column":11,"file":"/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/app/services/dataservices.server.service.js","function":null,"line":48,"method":null,"native":false},{"column":16,"file":"/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/node_modules/mongoose/node_modules/kareem/index.js","function":null,"line":103,"method":null,"native":false},{"column":9,"file":"node.js","function":"nextTickCallbackWith0Args","line":419,"method":null,"native":false},{"column":13,"file":"node.js","function":"process._tickCallback","line":348,"method":"_tickCallback","native":false}],"stack":["TypeError: next is not a function","    at /Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/app/services/dataservices.server.service.js:48:11","    at /Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/node_modules/mongoose/node_modules/kareem/index.js:103:16","    at nextTickCallbackWith0Args (node.js:419:9)","    at process._tickCallback (node.js:348:13)"],"level":"error","message":"uncaughtException: next is not a function","timestamp":"2016-06-16T09:27:46.345Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-16T09:30:18.386Z"}
+{"date":"Thu Jun 16 2016 15:00:21 GMT+0530 (IST)","process":{"pid":20199,"uid":1398152940,"gid":1067713822,"cwd":"/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula","execPath":"/usr/local/bin/node","version":"v4.3.0","argv":["/usr/local/bin/node","/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/server.js"],"memoryUsage":{"rss":67309568,"heapTotal":59989344,"heapUsed":32390760}},"os":{"loadavg":[1.9013671875,2.0712890625,1.994140625],"uptime":281186},"trace":[{"column":11,"file":"/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/app/services/dataservices.server.service.js","function":null,"line":48,"method":null,"native":false},{"column":16,"file":"/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/node_modules/mongoose/node_modules/kareem/index.js","function":null,"line":103,"method":null,"native":false},{"column":9,"file":"node.js","function":"nextTickCallbackWith0Args","line":419,"method":null,"native":false},{"column":13,"file":"node.js","function":"process._tickCallback","line":348,"method":"_tickCallback","native":false}],"stack":["TypeError: next is not a function","    at /Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/app/services/dataservices.server.service.js:48:11","    at /Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/node_modules/mongoose/node_modules/kareem/index.js:103:16","    at nextTickCallbackWith0Args (node.js:419:9)","    at process._tickCallback (node.js:348:13)"],"level":"error","message":"uncaughtException: next is not a function","timestamp":"2016-06-16T09:30:21.955Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-16T09:31:57.203Z"}
+{"date":"Thu Jun 16 2016 15:02:07 GMT+0530 (IST)","process":{"pid":20206,"uid":1398152940,"gid":1067713822,"cwd":"/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula","execPath":"/usr/local/bin/node","version":"v4.3.0","argv":["/usr/local/bin/node","/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/server.js"],"memoryUsage":{"rss":67252224,"heapTotal":59989344,"heapUsed":32804544}},"os":{"loadavg":[1.73291015625,1.95166015625,1.953125],"uptime":281292},"trace":[{"column":4,"file":"/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/app/services/dataservices.server.service.js","function":null,"line":48,"method":null,"native":false},{"column":16,"file":"/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/node_modules/mongoose/node_modules/kareem/index.js","function":null,"line":103,"method":null,"native":false},{"column":9,"file":"node.js","function":"nextTickCallbackWith0Args","line":419,"method":null,"native":false},{"column":13,"file":"node.js","function":"process._tickCallback","line":348,"method":"_tickCallback","native":false}],"stack":["ReferenceError: req is not defined","    at /Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/app/services/dataservices.server.service.js:48:4","    at /Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/node_modules/mongoose/node_modules/kareem/index.js:103:16","    at nextTickCallbackWith0Args (node.js:419:9)","    at process._tickCallback (node.js:348:13)"],"level":"error","message":"uncaughtException: req is not defined","timestamp":"2016-06-16T09:32:07.017Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-16T09:34:14.907Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-17T04:50:57.204Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-17T06:39:19.783Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-20T06:38:04.226Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-21T05:40:34.601Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-22T05:47:46.202Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-22T05:52:31.347Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-22T07:22:54.091Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-23T04:57:31.807Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-23T06:44:51.896Z"}
+{"date":"Thu Jun 23 2016 12:14:52 GMT+0530 (IST)","process":{"pid":48184,"uid":1398152940,"gid":1067713822,"cwd":"/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula","execPath":"/usr/local/bin/node","version":"v4.3.0","argv":["/usr/local/bin/node","/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/server.js"],"memoryUsage":{"rss":62242816,"heapTotal":57937504,"heapUsed":25991312}},"os":{"loadavg":[1.72265625,1.7265625,1.7431640625],"uptime":876065},"trace":[{"column":16,"file":"vm.js","function":"exports.runInThisContext","line":53,"method":"runInThisContext","native":false},{"column":25,"file":"module.js","function":"Module._compile","line":374,"method":"_compile","native":false},{"column":10,"file":"module.js","function":"Object.Module._extensions..js","line":417,"method":"Module._extensions..js","native":false},{"column":32,"file":"module.js","function":"Module.load","line":344,"method":"load","native":false},{"column":12,"file":"module.js","function":"Function.Module._load","line":301,"method":"Module._load","native":false},{"column":17,"file":"module.js","function":"Module.require","line":354,"method":"require","native":false},{"column":17,"file":"internal/module.js","function":"require","line":12,"method":null,"native":false},{"column":79,"file":"/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/app/routes/bloodbank.server.routes.js","function":"","line":1,"method":null,"native":false},{"column":26,"file":"module.js","function":"Module._compile","line":410,"method":"_compile","native":false},{"column":10,"file":"module.js","function":"Object.Module._extensions..js","line":417,"method":"Module._extensions..js","native":false},{"column":32,"file":"module.js","function":"Module.load","line":344,"method":"load","native":false},{"column":12,"file":"module.js","function":"Function.Module._load","line":301,"method":"Module._load","native":false},{"column":17,"file":"module.js","function":"Module.require","line":354,"method":"require","native":false},{"column":17,"file":"internal/module.js","function":"require","line":12,"method":null,"native":false},{"column":2,"file":"/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/config/express.js","function":"module.exports","line":59,"method":"exports","native":false},{"column":8,"file":"/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/server.js","function":"","line":9,"method":null,"native":false}],"stack":["SyntaxError: Unexpected reserved word","    at exports.runInThisContext (vm.js:53:16)","    at Module._compile (module.js:374:25)","    at Object.Module._extensions..js (module.js:417:10)","    at Module.load (module.js:344:32)","    at Function.Module._load (module.js:301:12)","    at Module.require (module.js:354:17)","    at require (internal/module.js:12:17)","    at Object.<anonymous> (/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/app/routes/bloodbank.server.routes.js:1:79)","    at Module._compile (module.js:410:26)","    at Object.Module._extensions..js (module.js:417:10)","    at Module.load (module.js:344:32)","    at Function.Module._load (module.js:301:12)","    at Module.require (module.js:354:17)","    at require (internal/module.js:12:17)","    at module.exports (/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/config/express.js:59:2)","    at Object.<anonymous> (/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/server.js:9:8)"],"level":"error","message":"uncaughtException: Unexpected reserved word","timestamp":"2016-06-23T06:44:52.288Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-23T06:46:08.198Z"}
+{"date":"Thu Jun 23 2016 12:16:08 GMT+0530 (IST)","process":{"pid":48196,"uid":1398152940,"gid":1067713822,"cwd":"/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula","execPath":"/usr/local/bin/node","version":"v4.3.0","argv":["/usr/local/bin/node","/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/server.js"],"memoryUsage":{"rss":63328256,"heapTotal":57937504,"heapUsed":26195952}},"os":{"loadavg":[1.9072265625,1.78369140625,1.7607421875],"uptime":876141},"trace":[{"column":15,"file":"/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/node_modules/express/lib/router/route.js","function":"Route.(anonymous function) [as delete]","line":196,"method":"(anonymous function) [as delete]","native":false},{"column":10,"file":"/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/app/routes/admin.server.routes.js","function":"module.exports","line":44,"method":"exports","native":false},{"column":49,"file":"/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/config/express.js","function":"module.exports","line":60,"method":"exports","native":false},{"column":8,"file":"/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/server.js","function":"","line":9,"method":null,"native":false},{"column":26,"file":"module.js","function":"Module._compile","line":410,"method":"_compile","native":false},{"column":10,"file":"module.js","function":"Object.Module._extensions..js","line":417,"method":"Module._extensions..js","native":false},{"column":32,"file":"module.js","function":"Module.load","line":344,"method":"load","native":false},{"column":12,"file":"module.js","function":"Function.Module._load","line":301,"method":"Module._load","native":false},{"column":10,"file":"module.js","function":"Function.Module.runMain","line":442,"method":"Module.runMain","native":false},{"column":18,"file":"node.js","function":"startup","line":136,"method":null,"native":false},{"column":3,"file":"node.js","function":null,"line":966,"method":null,"native":false}],"stack":["Error: Route.delete() requires callback functions but got a [object Undefined]","    at Route.(anonymous function) [as delete] (/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/node_modules/express/lib/router/route.js:196:15)","    at module.exports (/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/app/routes/admin.server.routes.js:44:10)","    at module.exports (/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/config/express.js:60:49)","    at Object.<anonymous> (/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/server.js:9:8)","    at Module._compile (module.js:410:26)","    at Object.Module._extensions..js (module.js:417:10)","    at Module.load (module.js:344:32)","    at Function.Module._load (module.js:301:12)","    at Function.Module.runMain (module.js:442:10)","    at startup (node.js:136:18)","    at node.js:966:3"],"level":"error","message":"uncaughtException: Route.delete() requires callback functions but got a [object Undefined]","timestamp":"2016-06-23T06:46:08.267Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-23T06:49:24.832Z"}
+{"date":"Thu Jun 23 2016 12:19:24 GMT+0530 (IST)","process":{"pid":48226,"uid":1398152940,"gid":1067713822,"cwd":"/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula","execPath":"/usr/local/bin/node","version":"v4.3.0","argv":["/usr/local/bin/node","/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/server.js"],"memoryUsage":{"rss":62922752,"heapTotal":57937504,"heapUsed":26396416}},"os":{"loadavg":[1.515625,1.66796875,1.712890625],"uptime":876337},"trace":[{"column":15,"file":"/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/node_modules/express/lib/router/route.js","function":"Route.(anonymous function) [as delete]","line":196,"method":"(anonymous function) [as delete]","native":false},{"column":10,"file":"/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/app/routes/admin.server.routes.js","function":"module.exports","line":46,"method":"exports","native":false},{"column":49,"file":"/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/config/express.js","function":"module.exports","line":60,"method":"exports","native":false},{"column":8,"file":"/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/server.js","function":"","line":9,"method":null,"native":false},{"column":26,"file":"module.js","function":"Module._compile","line":410,"method":"_compile","native":false},{"column":10,"file":"module.js","function":"Object.Module._extensions..js","line":417,"method":"Module._extensions..js","native":false},{"column":32,"file":"module.js","function":"Module.load","line":344,"method":"load","native":false},{"column":12,"file":"module.js","function":"Function.Module._load","line":301,"method":"Module._load","native":false},{"column":10,"file":"module.js","function":"Function.Module.runMain","line":442,"method":"Module.runMain","native":false},{"column":18,"file":"node.js","function":"startup","line":136,"method":null,"native":false},{"column":3,"file":"node.js","function":null,"line":966,"method":null,"native":false}],"stack":["Error: Route.delete() requires callback functions but got a [object Undefined]","    at Route.(anonymous function) [as delete] (/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/node_modules/express/lib/router/route.js:196:15)","    at module.exports (/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/app/routes/admin.server.routes.js:46:10)","    at module.exports (/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/config/express.js:60:49)","    at Object.<anonymous> (/Users/viswanath_gavva/Desktop/JS_WS/git/dracula/dracula/server.js:9:8)","    at Module._compile (module.js:410:26)","    at Object.Module._extensions..js (module.js:417:10)","    at Module.load (module.js:344:32)","    at Function.Module._load (module.js:301:12)","    at Function.Module.runMain (module.js:442:10)","    at startup (node.js:136:18)","    at node.js:966:3"],"level":"error","message":"uncaughtException: Route.delete() requires callback functions but got a [object Undefined]","timestamp":"2016-06-23T06:49:24.905Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-23T06:49:46.625Z"}
+{"level":"info","message":"inside express config undefined","timestamp":"2016-06-23T11:58:10.018Z"}

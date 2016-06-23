@@ -1,0 +1,49 @@
+<!-- This HTML contains the landing page of states admin page -->
+<div class="row" ng-controller="statecontroller as ctrl">
+			<div class="col-md-6">
+        		<div class="text-center">        		    
+				<h4 class="text-center">Create/Edit State</h2>
+				<form class="form-horizontal" ng-submit="ctrl.saveState()">
+				<uib-alert ng-repeat="error in ctrl.errors" type="danger" close="closeAlert($index)">{{error}}</uib-alert>
+					<div class="form-group">
+            			<label class="col-lg-4 control-label">Name:</label>
+            			<div class="col-lg-8">
+              				<input class="form-control" type="text" ng-model="ctrl.state.name" name="statename" id= "stateid" placeholder="State">
+              				<input class="form-control" type="hidden" ng-model="ctrl.state._id" name="stateid" id="hiddenstateid" placeholder="State">
+            			</div>
+          			</div> 					
+					<div class="form-group">
+		            	<div class="col-md-12">
+    	          			<input type="submit" class="btn btn-primary" value="{{ctrl.action}}">
+        	      			<span></span>
+            	  			<input type="reset" class="btn btn-default" value="Reset" ng-click="ctrl.resetForm()">
+            			</div>	
+            		</div> 
+				</form>
+        		</div>
+	        </div>
+	        <div class="col-md-6">  
+	        	<div class="text-center">
+	        	
+	        	<table class="table">
+    					<thead>
+      					<tr>      						
+        					<th>State: <input type="text" ng-model="searchStr" placeholder="search by City">
+          					</th>
+          					<th>Action
+          					</th>          					
+          					</form>
+      					</tr>
+    					</thead>
+    					<tbody>
+    						<tr ng-repeat="state in ctrl.states">
+        						<td>{{state.name}}</td>
+        						<td><a ng-click="ctrl.editState(state._id)" id="Edit{{ state._id }}" class="glyphicon glyphicon-edit"></a>  <a ng-click="ctrl.deleteState(state._id)" class="glyphicon glyphicon-trash"></a></td>
+    					    </tr>
+    					     
+    					</tbody>
+    			 </table>    			 
+    			 <uib-pagination total-items="totalItems" ng-model="currentPage" items-per-page="itemsPerPage"></uib-pagination>			    
+	        	</div>
+	        </div>
+</div>	        

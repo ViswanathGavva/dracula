@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/signin.css" rel="stylesheet">
+    
+
+</head>
+
+<body class="bg-backgroundmain" ng-app="admin">
+
+<div class="container">
+
+<div class="row">
+<% include partials/adminnavbar %>
+</div>
+
+<div class="row">
+	
+	<div class="container">
+		
+			<!-- This is just a template/landing page for angular App. Actual content will be served from angular views from public/app/admin/states.html Or cities.html OR events.html -->
+	      <div ng-view></div>  
+		
+	</div>
+</div>
+	<script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/angular/angular.min.js"></script>
+    <script src="js/angular-route/angular-route.min.js"></script>
+    <script src="js/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    
+    <script src="app/app.js"></script>
+    <script src="app/admin/utils/admin.client.utils.js"></script>
+    
+    <script src="app/admin/states/states.client.controller.js"></script>
+    <script src="app/admin/states/states.client.service.js"></script>
+    
+    <script src="app/admin/cities/cities.client.controller.js"></script>
+    <script src="app/admin/cities/cities.client.service.js"></script>
+    
+    <script src="app/admin/events/events.client.controller.js"></script>
+    <script src="app/admin/events/events.client.service.js"></script>
+    
+    <script src="app/admin/bbs/bbs.client.controller.js"></script>
+    <script src="app/admin/bbs/bbs.client.service.js"></script>
+    
+<div class="row">
+<% include partials/footer %>
+</div>
+
+</body>
+</html>

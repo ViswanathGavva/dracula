@@ -1,0 +1,109 @@
+<!-- This HTML contains the landing page of events admin page -->
+<div class="row" ng-controller="eventController as ctrl">
+			<div class="col-md-6">
+        		<div class="text-center">        		    
+				<h4 class="text-center">Create/Edit Event</h2>
+				<form class="form-horizontal" ng-submit="ctrl.saveEvent()">
+				<uib-alert ng-repeat="error in ctrl.errors" type="danger" close="closeAlert($index)">{{error}}</uib-alert>
+					<div class="form-group">
+            			<label class="col-lg-4 control-label">Name:</label>
+            			<div class="col-lg-8">
+              				<input class="form-control" type="text" ng-model="ctrl.curEvent.name" name="eventname" id= "eventId" placeholder="Event Name">
+              				<input class="form-control" type="hidden" ng-model="ctrl.curEvent._id" name="eventid" id="hiddeneventid">
+            			</div>
+          			</div> 					
+          			<div class="form-group">
+            			<label class="col-lg-4 control-label">Description:</label>
+            			<div class="col-lg-8">
+              				<textarea class="form-control"  ng-model="ctrl.curEvent.desc" name="eventdesc" id= "eventdesc" placeholder="Describe Event here..."></textarea>
+            			</div>
+          			</div> 					
+          			<div class="form-group">
+            			<label class="col-lg-4 control-label">When:</label>
+            			<div class="col-lg-8">
+              				<p class="input-group">
+              				<input type="text" class="form-control fc-group-admin" uib-datepicker-popup ng-model="ctrl.curEvent.startdt" is-open="ctrl.startDtPickr.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+              				<span class="input-group-btn">
+              				<button type="button" class="btn btn-default fc-group-admin" ng-click="ctrl.startDtPickr.opened=true"><i class="glyphicon glyphicon-calendar"></i></button>
+              				</span>
+              				</p>
+              				<p class="input-group">
+              				<input type="text" class="form-control fc-group-admin" uib-datepicker-popup ng-model="ctrl.curEvent.enddt" is-open="ctrl.endDtPickr.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+              				<span class="input-group-btn">
+              				<button type="button" class="btn btn-default fc-group-admin" ng-click="ctrl.endDtPickr.opened=true"><i class="glyphicon glyphicon-calendar"></i></button>
+              				</span>
+              				</p>
+            			</div>
+          			</div> 					
+          			<div class="form-group">
+            			<label class="col-lg-4 control-label">Place:</label>
+            			<div class="col-lg-8">
+              				<select id="eventcity" class="form-control fc-group-admin" name="eventcity" ng-model="ctrl.curEvent.city"               				
+              				ng-options="city for city in ctrl.cities">
+	                		</select>              				
+              				<textarea class="form-control fc-group-admin"  ng-model="ctrl.curEvent.address" name="eventaddr" id= "eventaddr" placeholder="Type Address here..."></textarea>
+              				<input class="form-control fc-group-admin" type="text" ng-model="ctrl.curEvent.pin" name="eventpin" id= "eventpin" placeholder="Pin code">
+              				
+            			</div>
+          			</div> 					
+          			
+          			<div class="form-group">
+            			<label class="col-lg-4 control-label">Contact Details:</label>
+            			<div class="col-lg-8">
+              				<input class="form-control fc-group-admin" type="email" ng-model="ctrl.curEvent.email" name="eventemail" id= "eventemail" placeholder="Email">
+              				<input class="form-control fc-group-admin" type="phone" ng-model="ctrl.curEvent.phone" name="eventphone" id= "eventphone" placeholder="Phone">
+            			</div>
+          			</div> 					
+          			          			          			
+          			
+					<div class="form-group">
+		            	<div class="col-md-12">
+    	          			<input type="submit" class="btn btn-primary" value="{{ctrl.action}}">
+        	      			<span></span>
+            	  			<input type="reset" class="btn btn-default" value="Reset" ng-click="ctrl.resetForm()">
+            			</div>	
+            		</div> 
+				</form>
+        		</div>
+	        </div>
+	        <div class="col-md-6">  
+	        	<div class="text-center">
+	        	
+	        	<table class="table">
+    					<thead>
+      					<tr>      						
+        					<th>Event
+          					</th>
+          					<th>Start Date
+          					</th>
+          					<th>End Date
+          					</th>
+          					<th>City
+          					</th>
+          					<th>Address
+          					</th>
+          					<th>Description
+          					</th>
+          					<th>Action
+          					</th> 
+          					         					
+          					</form>
+      					</tr>
+    					</thead>
+    					<tbody>
+    						<tr ng-repeat="event in ctrl.events">
+        						<td>{{event.name}}</td>
+        						<td>{{event.startdt | date:'yyyy-MMM-dd' }}</td>
+        						<td>{{event.enddt | date:'yyyy-MMM-dd' }}</td>
+        						<td>{{event.city}}</td>
+        						<td>{{event.address | address}}</td>
+        						<td>{{event.desc | shortText:40}}</td>
+        						<td><a ng-click="ctrl.editEvent(event._id)" id="Edit{{ event._id }}" class="glyphicon glyphicon-edit"></a>  <a ng-click="ctrl.deleteEvent(event._id)" class="glyphicon glyphicon-trash"></a></td>
+    					    </tr>
+    					     
+    					</tbody>
+    			 </table>    			 
+    			 <uib-pagination total-items="totalItems" ng-model="currentPage" items-per-page="itemsPerPage"></uib-pagination>			    
+	        	</div>
+	        </div>
+</div>	        

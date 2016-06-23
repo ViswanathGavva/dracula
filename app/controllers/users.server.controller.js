@@ -349,6 +349,17 @@ exports.requiresLogin = function(req, res, next) {
 	next();
 };
 
+exports.isAdmin = function(req, res, next) {
+	if(req.user) {
+		if(req.user.role !== 'admin'){
+		 return res.status(401).send({
+			message: 'User is not a Admin'
+		 });
+		}
+	}
+	next();
+};
+
 exports.renderProfile = function(req, res) {
 	if (!req.user) {
 		res.render('login', {

@@ -48,7 +48,7 @@ module.exports = function(app) {
 	}));*/
 	
 	app.route('/profile')
-		.get(users.renderProfile)
+		.get(users.requiresLogin,users.renderProfile)
 		.post(users.requiresLogin,users.saveProfile);
 	
 	app.route('/uploadprofilepic')

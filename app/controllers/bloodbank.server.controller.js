@@ -3,7 +3,7 @@ var mongoose = require('mongoose'),
 	logger = require('../../config/logger')
 	ds = require('../../app/services/dataservices.server.service');
 
-var getBloodbanks = function(req,res,next){
+/*var getBloodbanks = function(req,res,next){
 	var state=req.body.state,
 		city=req.body.city,
 		area=req.body.area;
@@ -22,7 +22,7 @@ var getBloodbanks = function(req,res,next){
 		}
 		});
 	
-}
+}*/
 
 exports.renderBloodbanks = function(req,res){
 ds.getStates(req,res,function(err){
@@ -38,7 +38,7 @@ ds.getStates(req,res,function(err){
 			res.redirect('/error');
 		
 		}
-		getBloodbanks(req,res,function(err,bloodbanks){
+		ds.getBloodbanks(function(err,bloodbanks){
 			if(err){
 			//log the error and redirect to error controller
 			logger.error('Error in get Bloodbank data',err);
@@ -50,13 +50,13 @@ ds.getStates(req,res,function(err){
 			delete req.session.focusele;
 			res.render('bloodbank',{
 				user: req.user ? req.user.username : '',
-				title: 'Submit Request',
+				title: 'Blood banks',
 				validateErrorMessages: req.flash('validationError'),
 				formdata: formdata,
 				focusele: focusele,				
 				states: req.states,
 				cities: req.cities,
-				bloodbanks:req.bloodbanks,
+				bloodbanks:bloodbanks,
 				messages: req.flash('info')	,
 				errors: req.flash('error')
 			});		
@@ -67,4 +67,69 @@ ds.getStates(req,res,function(err){
 });//End getstates.
 };	
 
-//exports.searchbloodbank = function(req,res,)
+//Admin CRUD APIs
+
+exports.listBloodbanks = function(req,res){
+	ds.getBloodbanks(function(err,bbs){
+		if(err){
+	 		//log the error and redirect to error controller
+	 		logger.error('Error in get blood banks data',err);
+	 		res.status(500).json({"msg":errmsg});
+		}
+		res.json(bbs);
+		res.end();
+	});
+};
+
+exports.updateBloodbank = function(req,res,next){
+	BloodBank.findByIdAndUpdate(req.params.bloodbankId,req.body,function(err,bb){
+		if(err){
+			return next(err);
+		}else{
+			res.json(bb);
+		}
+	});
+	
+}
+
+exports.deleteBloodbank = function(req,res,next){
+	BloodBank.findByIdAndDelete(req.params.bloodbankId,req.body,function(err,bb){
+		if(err){
+			return next(err);
+		}else{
+			res.json(bb);
+		}
+	});
+	
+}
+
+exports.createBloodbank = function(req,res,next){
+	var bb= new BloodBank(req.body);
+	bb.save(function(err) {
+		if (err) {
+			logger.error(err);
+			var errmsg = getErrorMessage(err);
+			res.status(500).json({"msg":errmsg});
+		}
+		else {
+			res.json(bb);
+		}
+	});
+}
+
+exports.BloodbankById = function(req,res,next){
+	var id = req.params.bloodbankId;
+	BloodBank.findOne({
+			_id: id
+		},
+		function(err, bb) {
+			if (err) {
+				logger.error(err);
+				return next(err);
+			}
+			else {
+				res.json(bb);
+			}
+		}
+	);
+}
